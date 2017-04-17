@@ -1,0 +1,73 @@
+	
+	public void getFuel(){
+		
+		
+		for(int i = 0; i < 100; i++){
+			
+			rnd = new Random();
+			TANKSIZE = rnd.nextInt(9-7+1)+7;
+			UNITSIZE = 1;
+			
+			fuel = rnd.nextInt(TANKSIZE-1)+1;
+			
+		System.out.println(i+ " Fue in tank: " + fuel + " tank size " + TANKSIZE);
+		
+		
+		if(TANKSIZE == fuel){
+			return;
+		}
+		
+		}
+	}
+	
+	/////////////////
+	///////////////////
+	
+	public LinkedList<Vehicle> getLeastOcc() {
+
+		double totalSize = 0;
+		double leastSize = 0;
+		int index = 0;
+
+		for (ListIterator<Pump> pumpIter = pumps.listIterator(); pumpIter.hasNext();) {
+
+			for (Vehicle vehicle : pumpIter.next().getQueue()) {
+
+				totalSize += vehicle.getSizeInQueue();
+
+			}
+			
+			if(){}
+			
+			pumpIter.next().SetCurrentQueueSize(totalSize);
+			
+
+		}
+
+		return pump.getQueue().get(index);
+
+	}
+	
+	for (ListIterator<Pump> pumpIter = pumps.listIterator(); pumpIter.hasNext();) {
+
+		for (Vehicle vehicle: pumpIter.next().) {
+
+			if (i.hasPrevious()) {
+				if (i.previous().getSizeInQueue() < i.next().getSizeInQueue()) {
+					index = i.previousIndex();
+				} else {
+					index = i.nextIndex();
+				}
+
+			} else {
+
+				index = i.nextIndex();
+
+			}
+
+		}
+
+		return pump.getQueue().get(index);
+
+	}
+	

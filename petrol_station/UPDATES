@@ -1,0 +1,61 @@
+UPDATES:
+
+DATE: 01/10/17
+1.CLASS NAMES UPDATED
+	1.1 TRUCKER --> TRUCKDRIVER;
+	1.2 FAMILY_SEDANS --> FAMILY_SEDAN;
+	1.3 SMALL_CARS --> SMALL_CAR;
+	WE ARE CRETING A CLASS NO NEED TO USE PLURAL NOUN UNLESS IT HAS A MEANING.
+	LOOK AT LAB 5.
+2.CLASS VEHICLE MODIFIED
+	
+	2.1 protected Random rnd;
+		RANDOM MOVED ABSTRACT CLASS
+	2.2	public abstract int getFuelInTank();
+		METHOD SIGNATURE WAS ADDED;
+	2.3	public abstract int getTankSize();
+		METHOD SIGNATURE WAS ADDED;
+	2.4	public abstract double getQueueSize();
+		METHOD SIGNATURE WAS ADDED;
+	2.5	public double getSizeInQueue()
+		A METHOD THAT TAKES VEHICLE SIZES FROM CONCRETE CLASSES
+	
+	
+3.CLASS MOTOBIKE UPDATED
+	
+	3.1	public int getTankSize() 
+		RETURN TANK SIZE
+	3.2	public double getQueueSize() 
+		RETURNS SIZE IN THE QUEUE
+	3.4	public int getFuelInTank()
+		RETURNS TANK STATUS
+	
+4.CLASS QUEUE UPDATED
+	4.1	public void addToQueue(Vehicle o)
+		ADDS VEHICLE TO QUEUE
+	4.2 public LinkedList<Vehicle> getQueue() 
+		RETURNS AN ARRAY WITH VEHICLES
+	4.3 public double getQueueSize() 
+		RETURNS QUEUE SIZE
+	4.4 public boolean isEmpty(Vehicle o) 
+		CHECKS IF THE QUEUE CAN ACCEPT A VEHICLE AND RETURNS BOOLEAN VALUE
+	4.5 public void removeFirstFromQueue()
+		REMOVES FIRS ELEMENT IN THE QUEUE
+
+5.CLASS FAMILY_SEDAN
+	5.1	public int getTankSize() 
+		RETURN TANK SIZE
+	5.2	public double getQueueSize() 
+		RETURNS SIZE IN THE QUEUE
+	5.4	public int getFuelInTank()
+		RETURNS TANK STATUS
+		 
+6.CLASS SMALL_CAR UPDATED
+	6.1	public int getTankSize() 
+		RETURN TANK SIZE
+	6.2	public double getQueueSize() 
+		RETURNS SIZE IN THE QUEUE
+	6.4	public int getFuelInTank()
+		RETURNS TANK STATUS
+		 
+
