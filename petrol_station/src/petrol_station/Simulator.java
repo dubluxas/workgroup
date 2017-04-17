@@ -81,7 +81,7 @@ public class Simulator {
 				shop = new Shop((int) array[e][x]);
 			}
 			x++;
-			//generates random num
+			//generates random number
 			Random rnd = new Random();
 			double randomNumber = rnd.nextDouble();
 
