@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * @author Justas Petrusonis
  * @author Jasmin Sabaka
- * @version v1.05
+ * @version v1.06
  */
 
 public class SmallCar extends Vehicle {
