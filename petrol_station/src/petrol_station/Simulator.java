@@ -104,7 +104,7 @@ public class Simulator {
 								 { 50, 1, 2, 0.1 }, { 50, 1, 2, 0.2 }, { 50, 1, 2, 0.3 }, { 50, 1, 2, 0.4 }, { 50, 1, 2, 0.5 },
 								 { 50, 1, 4, 0.1 }, { 50, 1, 4, 0.2 }, { 50, 1, 4, 0.3 }, { 50, 1, 4, 0.4 }, { 50, 1, 4, 0.5 },
 								 { 50, 2, 1, 0.1 }, { 50, 2, 1, 0.2 }, { 50, 2, 1, 0.3 }, { 50, 2, 1, 0.4 }, { 50, 2, 1, 0.5 },
-								{ 50, 2, 2, 0.1 }, { 50, 2, 2, 0.2 }, { 50, 2, 2, 0.3 }, { 50, 2, 2, 0.4 }, { 50, 2, 2, 0.5 },
+								 { 50, 2, 2, 0.1 }, { 50, 2, 2, 0.2 }, { 50, 2, 2, 0.3 }, { 50, 2, 2, 0.4 }, { 50, 2, 2, 0.5 },
 								 { 50, 2, 4, 0.1 }, { 50, 2, 4, 0.2 }, { 50, 2, 4, 0.3 }, { 50, 2, 4, 0.4 }, { 50, 2, 4, 0.5 },
 								 { 50, 4, 1, 0.1 }, { 50, 4, 1, 0.2 }, { 50, 4, 1, 0.3 }, { 50, 4, 1, 0.4 }, { 50, 4, 1, 0.5 },
 								 { 50, 4, 2, 0.1 }, { 50, 4, 2, 0.2 }, { 50, 4, 2, 0.3 }, { 50, 4, 2, 0.4 }, { 50, 4, 2, 0.5 },
@@ -146,7 +146,9 @@ public class Simulator {
 
 	// number of steps needed to run a program
 	private void simulate(int num) {
-
+		
+		long start = System.currentTimeMillis();
+	  
 		while (e < array.length) {
 
 			if (step == num - 1 && e < array.length) {
@@ -159,16 +161,14 @@ public class Simulator {
 
 			e++;
 		}
+		
+		 long end = System.currentTimeMillis();
+		 System.out.println("Execution time: " + (end - start)/1000 + "s");
 	}
 
 	// Simulates one program step
 	private void simulateoneStep() {
 
-	
-		// System.out.println(e);
-		//System.out.println(array.length);
-		//System.out.println(array[0].length);
-		//System.out.println(array[0][1].length);
 		for (int x = 0; x < array[0].length-1;) {
 			
 			if(step == 0){
@@ -225,7 +225,7 @@ public class Simulator {
 
 			shop.addCustomer(station);
 
-			shop.pay(station.getCustomers(), station.getPumps(), step, 10);
+			shop.pay(station.getCustomers(), station.getPumps(), step, 20);
 
 			print();
 		
@@ -235,8 +235,7 @@ public class Simulator {
 				station = null;
 				
 				counter = 0;
-				System.out.println(shop);
-				
+							
 				
 			}
 
