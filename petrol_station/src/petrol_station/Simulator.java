@@ -15,7 +15,6 @@ public class Simulator {
 	// protected static int tillCount = 4;//
 	// protected static int pumpCount = 4;
 	private Station station;
-	private int seed;
 	private int counter;
 	private static int step;
 	private Random rnd;
@@ -127,17 +126,16 @@ public class Simulator {
 	int e = 0;
 
 	public static void main(String[] args) {
-
-		int seed = 42; // By default, use a seed of 42
-		Simulator s = new Simulator(seed);
+		
+		Simulator s = new Simulator();
 		s.simulate(numOfsteps);
 
 	}
 
-	public Simulator(int seed) {
-		this.seed = seed;
+	public Simulator() {
+		
 		values = new ArrayList<>();
-		//high-quality random numbers than Random() class
+		//higher-quality random numbers than Random() class
 		//Random() did not worked me in loop
 		rnd = new SecureRandom();
 		
@@ -172,10 +170,9 @@ public class Simulator {
 		for (int x = 0; x < array[0].length-1;) {
 			
 			if(step == 0){
-				rnd.setSeed(40);
+				rnd.setSeed((int) array[e][x]);
 				saveValues(values, array[e][x]);
 			}
-				
 			
 			double randomNumber = rnd.nextDouble();
 			x++;
@@ -217,9 +214,7 @@ public class Simulator {
 					station.getLeastOccupied().addtoQueue(new Truck());
 					//System.out.println(step);
 				}
-			} else {
-				System.out.print("");
-			}
+			} 
 
 			station.topUp();
 

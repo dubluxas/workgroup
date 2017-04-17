@@ -136,7 +136,7 @@ public class Shop {
 
 	@SuppressWarnings("boxing")
 	public void pay(Map<Driver, Integer> driverInfo, List<Pump> pumps, int step, int stepstoSkip) {
-
+		
 		if (stepp == 0) {
 			stepp = step;
 		}
