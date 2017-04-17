@@ -9,7 +9,7 @@ import java.util.Map.Entry;
 /**
  * @author Justas Petrusonis
  * @author Jasmin Sabaka
- * @version V1.00, 03/10/17
+ * @version V1.00, 03/10/18
  */
 
 public class Station {
