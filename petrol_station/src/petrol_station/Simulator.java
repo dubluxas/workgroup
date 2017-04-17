@@ -11,12 +11,13 @@ public class Simulator {
 	protected static double p = 0.2;
 	protected static double q = 0.2;
 	protected static double t = 0.5;
-	// protected static int tillCount = 4;
+	// protected static int tillCount = 4;//
 	// protected static int pumpCount = 4;
 	private Station station;
 	private int seed;
 	private int counter;
 	private static int step;
+	private Random rnd;
 	private Shop shop; // pumps, tills, p
 	private double array[][] = { { 1, 1, 0.1 }, { 1, 1, 0.2 }, { 1, 1, 0.3 }, { 1, 1, 0.4 }, { 1, 1, 0.5 },
 			{ 1, 2, 0.1 }, { 1, 2, 0.2 }, { 1, 2, 0.3 }, { 1, 2, 0.4 }, { 1, 3, 0.5 }, { 1, 4, 0.1 }, { 1, 4, 0.2 },
@@ -43,12 +44,14 @@ public class Simulator {
 	public Simulator(int seed) {
 		this.seed = seed;
 		values = new ArrayList<>();
+		rnd = new Random();
+		
 	}
 
 	// number of steps needed to run a program
 	private void simulate(int num) {
 
-		while (e <= array.length - 1) {
+		while (e < array.length) {
 
 			if (step == num - 1 && e < array.length) {
 				step = 0;
@@ -65,6 +68,8 @@ public class Simulator {
 	// Simulates one program step
 	private void simulateoneStep(int seed) {
 
+		rnd.setSeed(40);
+		
 		// System.out.println(e);
 		for (int x = 0; x < array[0].length - 1;) {
 
@@ -82,23 +87,27 @@ public class Simulator {
 			}
 			x++;
 			//generates random number
-			Random rnd = new Random();
+			
 			double randomNumber = rnd.nextDouble();
 
 			saveValues(values, array[e][x]);
 
 			if (randomNumber <= array[e][x]) {
 				station.getLeastOccupied().addtoQueue(new SmallCar());
+				System.out.println("small car" + step);
 			} // else
 			if (randomNumber >= array[e][x] && randomNumber <= (array[e][x] * 2)) {
 				station.getLeastOccupied().addtoQueue(new Motorbike());
+				System.out.println("motobyke" + step);
 			} // else
 			if (randomNumber >= (2 * array[e][x]) && randomNumber <= (array[e][x] * 2) + q) {
 				station.getLeastOccupied().addtoQueue(new FamilySedan());
+				System.out.println("family" + step);
 			} // else
 			if (station.getAllowTrucks()) {
 				if (randomNumber >= ((2 * array[e][x]) + q) && randomNumber <= (array[e][x] * 2) + q + t) {
 					station.getLeastOccupied().addtoQueue(new Truck());
+					//System.out.println(step);
 				}
 			} else {
 				System.out.print("");
