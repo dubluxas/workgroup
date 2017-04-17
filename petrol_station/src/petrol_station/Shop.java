@@ -207,5 +207,13 @@ public class Shop {
 		
 		return Double.toString(sum);
 	}
+	
+	public void clear(){
+		
+		tills=null;
+		ShopingArea=null;
+		bill=null;
+		
+	}
 
 }

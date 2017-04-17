@@ -68,7 +68,6 @@ public class Station {
 		trucks = true;
 
 	}
-	
 
 	//////////////////
 	// test methods
@@ -144,18 +143,18 @@ public class Station {
 
 		if (!driverInfo.isEmpty()) {
 
-			//Iterator<Pump> itr = pumps.iterator();
+			// Iterator<Pump> itr = pumps.iterator();
 
-			for (Pump p: pumps) {
+			for (Pump p : pumps) {
 
-				if(p.getVehicleQueue().peek() != null){
-					
-				if (driverInfo.containsKey(p.getVehicleQueue().peek().getDriver())) {
+				if (p.getVehicleQueue().peek() != null) {
 
-					//if(pump.getVehicleQueue().poll() != null){
-					
-					p.getVehicleQueue().poll();
-					
+					if (driverInfo.containsKey(p.getVehicleQueue().peek().getDriver())) {
+
+						// if(pump.getVehicleQueue().poll() != null){
+
+						p.getVehicleQueue().poll();
+
 					}
 
 				}
@@ -165,25 +164,24 @@ public class Station {
 		}
 
 	}
-	
+
 	@SuppressWarnings("boxing")
-	public Map<Vehicle,Double> getLostVehicles(){
-		
-		Map<Vehicle,Double> lostMoney = new HashMap<>();
-		
-		for(Pump p: pumps){
-		
-			for(Vehicle v: p.getLostVehicles()){
-				lostMoney.put(v, Shop.getPricePerDriver(v.getTankSize()-v.getFuelInTank(), Shop.getPrice()) );
+	public Map<Vehicle, Double> getLostVehicles() {
+
+		Map<Vehicle, Double> lostMoney = new HashMap<>();
+
+		for (Pump p : pumps) {
+
+			for (Vehicle v : p.getLostVehicles()) {
+				lostMoney.put(v, Shop.getPricePerDriver(v.getTankSize() - v.getFuelInTank(), Shop.getPrice()));
 			}
-			
+
 		}
-		
+
 		return lostMoney;
+
 	}
-	
-		
-	
+
 	public void topUp() {
 
 		for (Pump p : pumps) {
@@ -196,16 +194,22 @@ public class Station {
 		}
 
 	}
-	
-	public void setAllowtrucks(boolean trucks){
-		if(trucks != this.trucks){
+
+	public void setAllowtrucks(boolean trucks) {
+		if (trucks != this.trucks) {
 			this.trucks = trucks;
 		}
 	}
-	
-	public boolean getAllowTrucks(){
+
+	public boolean getAllowTrucks() {
 		return trucks;
 	}
-		
 	
+	public void clear(){
+		pump = null;
+		pumps = null;
+		trucks = false;
+		drivers = null;
+	}
+
 }
