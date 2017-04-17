@@ -284,7 +284,7 @@ public class Simulator {
 	private void saveValues(List<Double> arr, double value) {
 
 		if (counter < array[0].length) {
-			arr.add(value);
+			arr.add(value); 
 			counter++;
 		}
 	}
