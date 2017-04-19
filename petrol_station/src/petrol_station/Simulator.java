@@ -1,12 +1,10 @@
 package petrol_station;
 
 import java.util.Map.Entry;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class Simulator {
@@ -26,7 +24,6 @@ public class Simulator {
 
 	private double[][] array;
 	private List<Double> values;
-	
 
 	public static void main(String[] args) {
 
@@ -65,7 +62,7 @@ public class Simulator {
 		}
 
 		long end = System.currentTimeMillis();
-		System.out.println("Execution time: " + (end - start) / 1000 + "s");
+		System.out.println("Execution time: " + (double) (end - start) / 1000 + " s.");
 	}
 
 	// Simulates one program step
@@ -127,11 +124,7 @@ public class Simulator {
 			shop.pay(station.getCustomers(), station.getPumps(), step, 20);
 
 			print();
-			//if(!(station.getCustomers() != null) || station != null){
-			//System.out.println(station.getCustomers().size());
-			//}else{
-			//	System.out.println("ddd");
-			//}
+			
 		}
 
 	}
@@ -139,7 +132,8 @@ public class Simulator {
 	public void print() {
 
 		if (step == (numOfsteps - 1)) {
-			//BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
+			// BufferedWriter log = new BufferedWriter(new
+			// OutputStreamWriter(System.out));
 			StringBuilder sb = new StringBuilder();
 			sb.append("=========================\n");
 			sb.append("Simulator Counter: ").append((e + 1)).append("\n");
@@ -151,9 +145,9 @@ public class Simulator {
 			sb.append("Finance:");
 			sb.append("\nEarned money ").append(Functions.round(shop.toString()));
 			sb.append("\nlost money: ").append(Functions.round(getLostmoney())).append("\n");
-			//sb.setLength(sb.length());
+			// sb.setLength(sb.length());
 			System.out.println(sb.toString());
-			
+
 			clear();
 
 		}
@@ -180,17 +174,10 @@ public class Simulator {
 		}
 	}
 
-	@SuppressWarnings("boxing")
 	private String getLostmoney() {
 
 		double sum = 0.00;
-
-		for (Entry<Vehicle, Double> m : station.getLostVehicles().entrySet()) {
-
-			sum += m.getValue();
-
-		}
-
+		sum = station.getLostVehicles().entrySet().stream().map(Map.Entry::getValue).mapToInt(Number::intValue).sum();
 		return String.valueOf(sum);
 
 	}
