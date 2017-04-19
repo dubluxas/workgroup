@@ -383,7 +383,8 @@ public class Simulator {
 		
 		long start = System.currentTimeMillis();
 		
-		loadsettings(Functions.readSettings(), array);
+		array = Functions.loadsettings(Functions.readSettings());
+		System.out.println(array);
 		while (e < array.length) {
 
 			if (step == num - 1 && e < array.length) {
@@ -429,10 +430,9 @@ public class Simulator {
 			x++;
 			
 			double p_ratio = array[e][x];
+			saveValues(values, array[e][x]);
 			x++;
 			double q_ratio = array[e][x];
-			
-			//System.out.println(randomNumber);
 			saveValues(values, array[e][x]);
 
 			if (randomNumber <= p_ratio) {
@@ -485,10 +485,10 @@ public class Simulator {
 			// StringBuffer is synchronised, we do not need such a future.
 			StringBuilder sb = new StringBuilder();
 			sb.append("=========================\n");
-			sb.append("Simulation number: ").append((e + 1)).append("\n");
+			sb.append("Simulator Counter: ").append((e + 1)).append("\n");
 			sb.append("Seed: ").append(values.get(0)).append("\n");
-			sb.append("Pumps: ").append(values.get(1)).append(" Tills: ").append(values.get(2)).append(" p cof: ")
-					.append(values.get(3));
+			sb.append("Pumps: ").append(values.get(1)).append(" Tills: ").append(values.get(2));
+			sb.append("\np cof: ").append(values.get(3)).append("q cof: ").append(values.get(4));
 			sb.append("\n=========================\n\n");
 			sb.append(getLostVehicles());
 			sb.append("Finance:");
@@ -536,18 +536,7 @@ public class Simulator {
 
 	}
 	
-	public static void loadsettings(String string[][], double[][] array){
-		
-		//System.out.println(string.length);
-		array = new  double[string.length][string[0].length];
-		for (int i = 0; i < string.length; i++) {
-			for (int j = 0; j < string[0].length; j++) {
-				array[i][j] = Double.valueOf(string[i][j].toString());
-			}
-		}
-		
-	}
-
+	
 	private String getLostVehicles() {
 
 		int w = 0;

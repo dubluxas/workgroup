@@ -40,11 +40,28 @@ public final class Functions {
 			return string;
 
 		} catch (IOException e) {
-			System.err.println(e.getMessage() +"========================================");
+			e.printStackTrace();
 		}
 
 		return null;
 
+	}
+	
+	@SuppressWarnings("boxing")
+	public static double[][] loadsettings(String string[][]){
+		
+		//System.out.println(string.length);
+		double[][] a  = new  double[string.length][string[0].length];
+		for (int i = 0; i < string.length; i++) {
+			for (int j = 0; j < string[0].length; j++) {
+				a[i][j] = Double.valueOf(string[i][j].toString());
+			}
+		}
+		
+		
+		
+		return a;
+		
 	}
 
 }
