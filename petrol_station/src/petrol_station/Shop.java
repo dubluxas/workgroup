@@ -169,7 +169,7 @@ public class Shop {
 							pump.getVehicleQueue().poll();
 							t.getDriverQueue().poll();
 							driverInfo.remove(t.getDriverQueue().peek());
-
+							
 						}
 
 					}
@@ -197,15 +197,16 @@ public class Shop {
 	
 	public String toString() {
 
-		StringBuilder sb = new StringBuilder();
-		double sum = 0;
+		//StringBuilder sb = new StringBuilder();
+		//double sum = 0;
 
-		for (double p : getBills().values()) {
+		//for (double p : getBills().values()) {
 
-			sum += p;
-
-		}
+		//	sum += p;
 		
+		//}
+		//java future
+		double sum = getBills().values().stream().mapToInt(Number::intValue).sum();
 		return Double.toString(sum);
 	}
 	

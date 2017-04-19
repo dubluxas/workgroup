@@ -129,7 +129,7 @@ public class SimulatorGUI extends Simulator {
 		settings.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e2) {
 				// TODO Auto-generated method stub
 				settingsWindow();
 			}

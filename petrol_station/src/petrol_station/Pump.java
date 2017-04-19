@@ -95,11 +95,13 @@ public class Pump {
 
 		double size = 0;
 
-		for (Vehicle obj : queue) {
-			size += obj.getSizeInQueue();
+		//for (Vehicle obj : queue) {
+		//	size += obj.getSizeInQueue();
 
-		}
-
+		//}
+		
+		size = queue.size();
+		
 		return size;
 
 	}
