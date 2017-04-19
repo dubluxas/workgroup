@@ -2,13 +2,9 @@ package petrol_station;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 /**
  * @author Justas Petrusonis
@@ -20,8 +16,10 @@ public class Station {
 
 	private Pump pump;
 	private List<Pump> pumps;
-	private boolean trucks = false;
 	private Map<Driver, Integer> drivers;
+	private Map<Vehicle, Double> lostVehicles;
+	private boolean trucks = false;
+
 	private boolean newVehicle;
 
 	/**
@@ -33,15 +31,18 @@ public class Station {
 	 */
 
 	public Station(int pumpSize, boolean trucks) {
-
+		
 		pumps = new ArrayList<>();
+		lostVehicles = new HashMap<>();
+		drivers = new HashMap<>();
 
 		for (int i = 1; i <= pumpSize; i++) {
 			pump = new Pump();
 			pumps.add(pump);
 
-			this.trucks = trucks;
 		}
+				
+		this.trucks = trucks;
 
 	}
 
@@ -55,14 +56,16 @@ public class Station {
 	public Station(int pumpSize) {
 
 		pumps = new ArrayList<>();
+		drivers = new HashMap<>();
+		lostVehicles = new HashMap<>();
 
 		for (int i = 1; i <= pumpSize; i++) {
 			pump = new Pump();
 			pumps.add(pump);
 
-			this.trucks = false;
-			drivers = new HashMap<>();
 		}
+		
+		this.trucks = false;
 
 	}
 
@@ -71,8 +74,9 @@ public class Station {
 		pumps = new ArrayList<>();
 		pump = new Pump();
 		pumps.add(pump);
-		trucks = true;
+		trucks = false;
 		drivers = new HashMap<>();
+		lostVehicles = new HashMap<>();
 
 	}
 
@@ -84,10 +88,11 @@ public class Station {
 
 	public Pump getLeastOccupied() {
 
-		//new vehicle boolean was created to reduce program run time.
-		//get customers code will be executed if new vehicle arrived else just return old list of drivers.
-		//used program visualVM to check memory usage.
-		//program run time was reduced from 16s to 6s
+		// new vehicle boolean was created to reduce program run time.
+		// get customers code will be executed if new vehicle arrived else just
+		// return old list of drivers.
+		// used program visualVM to check memory usage.
+		// program run time was reduced from 16s to 6s
 		newVehicle = true;
 
 		int index = 0;
@@ -132,7 +137,7 @@ public class Station {
 
 				}
 			}
-			
+
 			newVehicle = false;
 
 		}
@@ -170,12 +175,10 @@ public class Station {
 	@SuppressWarnings("boxing")
 	public Map<Vehicle, Double> getLostVehicles() {
 
-		Map<Vehicle, Double> lostMoney = new HashMap<>();
-
 		for (Pump p : pumps) {
 
 			for (Vehicle v : p.getLostVehicles()) {
-				lostMoney.put(v, Shop.getPricePerDriver(v.getTankSize() - v.getFuelInTank(), Shop.getPrice()));
+				lostVehicles.put(v, Shop.getPricePerDriver(v.getTankSize() - v.getFuelInTank(), Shop.getPrice()));
 			}
 
 		}
@@ -183,7 +186,7 @@ public class Station {
 		// pumps.stream().flatMap(p -> p.getLostVehicles()
 		// .stream()).collect(Collectors.toMap(Shop.getPricePerDriver(v.getTankSize()
 		// - v.getFuelInTank(),Shop:get))
-		return lostMoney;
+		return lostVehicles;
 
 	}
 

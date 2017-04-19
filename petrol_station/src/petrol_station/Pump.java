@@ -55,7 +55,7 @@ public class Pump {
 	}
 
 	///////////////////////////////
-	// add and gets info about driver for shop
+	// adds and gets info about driver for shop
 	////////////////////////////////
 	public void addDriverInfo(Driver o, Integer galls) {
 
@@ -94,16 +94,9 @@ public class Pump {
 	public double checkQueueSize() {
 
 		double size = 0;
-
-		//for (Vehicle obj : queue) {
-		//	size += obj.getSizeInQueue();
-
-		//}
-		
 		size = queue.size();
 		
 		return size;
-
 	}
 
 	/**

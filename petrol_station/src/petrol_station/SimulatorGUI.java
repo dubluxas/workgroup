@@ -1,28 +1,19 @@
 package petrol_station;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 
 public class SimulatorGUI extends Simulator {
@@ -61,36 +52,26 @@ public class SimulatorGUI extends Simulator {
 	private JCheckBox allowTrucks;
 
 	public SimulatorGUI() {
-		//super(seed);
-			/*		
-		  try {
-		        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		    } catch (ClassNotFoundException e) {
-		        e.printStackTrace();
-		    } catch (InstantiationException e) {
-		        e.printStackTrace();
-		    } catch (IllegalAccessException e) {
-		        e.printStackTrace();
-		    } catch (UnsupportedLookAndFeelException e) {
-		        e.printStackTrace();
-		    }
-		*/
+		// super(seed);
+		/*
+		 * try {
+		 * UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		 * } catch (ClassNotFoundException e) { e.printStackTrace(); } catch
+		 * (InstantiationException e) { e.printStackTrace(); } catch
+		 * (IllegalAccessException e) { e.printStackTrace(); } catch
+		 * (UnsupportedLookAndFeelException e) { e.printStackTrace(); }
+		 */
 		// UIManager.installLookAndFeel(mainFrame);
 		/*
-		 try {
-
-             for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                    if ("metal".equals(info.getName())) {
-                        UIManager.setLookAndFeel(info.getClassName());
-                        break;
-                    }
-                }
-       
-           
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-	*/	
+		 * try {
+		 * 
+		 * for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+		 * if ("metal".equals(info.getName())) {
+		 * UIManager.setLookAndFeel(info.getClassName()); break; } }
+		 * 
+		 * 
+		 * } catch (Exception e) { e.printStackTrace(); }
+		 */
 	}
 
 	public void mainWindow() {
@@ -229,13 +210,11 @@ public class SimulatorGUI extends Simulator {
 			public void actionPerformed(ActionEvent e) {
 				if (!truckSlider.getSlider().isEnabled()) {
 					truckSlider.getSlider().setEnabled(true);
-					//station.setAllowtrucks(true);
-				}else if(truckSlider.getSlider().isEnabled()){
+					// station.setAllowtrucks(true);
+				} else if (truckSlider.getSlider().isEnabled()) {
 					truckSlider.getSlider().setEnabled(false);
-					//station.setAllowtrucks(true);
+					// station.setAllowtrucks(true);
 				}
-
-				
 
 			}
 		});
@@ -245,34 +224,31 @@ public class SimulatorGUI extends Simulator {
 		settingsCenterbottom.add(tillSlider);
 		settingsCenterbottom.add(pumpSlider);
 
-	
 		settingsCenterPanel.add(settingsCenterTop, BorderLayout.NORTH);
 		settingsCenterPanel.add(settingsCentermid, BorderLayout.CENTER);
 		settingsCenterPanel.add(settingsCenterbottom, BorderLayout.SOUTH);
-		
+
 		//////////////////////////////
-		
+
 		save = new JButton("Save");
-		
+
 		save.addActionListener(new save());
-		
+
 		cancel = new JButton("Cancel");
-		
+
 		cancel.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				exitWindow(settingFrame);
-				
+
 			}
 		});
-		
+
 		settingsBottom = new JPanel(new FlowLayout());
 		settingsBottom.add(save);
 		settingsBottom.add(cancel);
 
-		
-		
 		settingsContainer.add(settingsTopPanel, BorderLayout.NORTH);
 		settingsContainer.add(settingsCenterPanel, BorderLayout.CENTER);
 		settingsContainer.add(settingsBottom, BorderLayout.SOUTH);
@@ -287,30 +263,28 @@ public class SimulatorGUI extends Simulator {
 		if (response == JOptionPane.YES_OPTION) {
 			frame.dispose();
 		}
-		
+
 	}
-	
-	private class save implements ActionListener{
-		
-		public void actionPerformed(ActionEvent e){
-			
-			//p=scarSlider.getValue().doubleValue();
-			//pumpCount = pumpSlider.getValue().intValue();
-			//tillCount = tillSlider.getValue().intValue();
+
+	private class save implements ActionListener {
+
+		public void actionPerformed(ActionEvent e) {
+
+			// p=scarSlider.getValue().doubleValue();
+			// pumpCount = pumpSlider.getValue().intValue();
+			// tillCount = tillSlider.getValue().intValue();
 			System.out.println(p);
-			
+
 		}
-		
+
 	}
 
 	public static void main(String[] args) {
 
 		SimulatorGUI s = new SimulatorGUI();
 		s.mainWindow();
-		//s.settingsWindow();
+		// s.settingsWindow();
 		s.makeVisible();
 	}
-	
-	
 
 }

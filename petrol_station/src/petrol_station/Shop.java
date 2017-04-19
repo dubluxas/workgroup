@@ -22,8 +22,8 @@ public class Shop {
 	private List<Till> tills;
 	private Map<Driver, Integer> ShopingArea;
 	private Map<Driver, Double> bill;
-	// private List<Vehicle> list = new ArrayList<>();
 	private List<Driver> d = new ArrayList<>();
+	private int stepp = 0;
 
 	/**
 	 * This method creates a specified number of tills.
@@ -43,6 +43,8 @@ public class Shop {
 		}
 
 	}
+	
+	
 
 	public Shop() {
 
@@ -96,7 +98,7 @@ public class Shop {
 		if (!station.getCustomers().isEmpty()) {
 
 			for (Entry<Driver, Integer> driver : station.getCustomers().entrySet()) {
-				//d arraylist is used to make sure that the same customer not gonna be added to the queue
+				//d arrayList is used to make sure that the same customer not going to be added to the queue?!
 				if (!d.contains(driver.getKey())) {
 					getLeastOccupied().addtoQueue(driver.getKey());
 					d.add(driver.getKey());
@@ -128,12 +130,7 @@ public class Shop {
 		return tills.get(index);
 	}
 
-	// test
-	public List<Till> gettills() {
-		return tills;
-	}
-
-	private int stepp = 0;
+		
 
 	@SuppressWarnings("boxing")
 	public void pay(Map<Driver, Integer> driverInfo, List<Pump> pumps, int step, int stepstoSkip) {
@@ -158,31 +155,36 @@ public class Shop {
 								getPricePerDriver(driverInfo.get(t.getDriverQueue().peek()), getPrice()));
 					}
 				}
-				for (Iterator<Pump> itr2 = pumps.iterator(); itr2.hasNext();) {
-
-					Pump pump = itr2.next();
-
-					if (pump.getVehicleQueue().peek() != null) {
-
-						if (pump.getVehicleQueue().peek().getDriver().equals(t.getDriverQueue().peek())) {
-
-							pump.getVehicleQueue().poll();
-							t.getDriverQueue().poll();
-							driverInfo.remove(t.getDriverQueue().peek());
-							
-						}
-
-					}
-				}
+				
+				delVehicle(pumps, driverInfo, t);
 
 			}
 
 			stepp = 0;
 
 		}
-		//System.out.println("Skipped: " + step + " stepp+stepstoSkip " + (stepp + stepstoSkip));
-		// System.out.println(list);
+	
 
+	}
+	
+	private void delVehicle(List<Pump> pumps , Map<Driver, Integer> driverInfo, Till t){
+		
+		for (Iterator<Pump> itr2 = pumps.iterator(); itr2.hasNext();) {
+
+			Pump pump = itr2.next();
+
+			if (pump.getVehicleQueue().peek() != null) {
+
+				if (pump.getVehicleQueue().peek().getDriver().equals(t.getDriverQueue().peek())) {
+
+					pump.getVehicleQueue().poll();
+					t.getDriverQueue().poll();
+					driverInfo.remove(t.getDriverQueue().peek());
+					
+				}
+
+			}
+		}
 	}
 
 	public static double getPricePerDriver(int gallons, double price) {
@@ -196,16 +198,7 @@ public class Shop {
 
 	
 	public String toString() {
-
-		//StringBuilder sb = new StringBuilder();
-		//double sum = 0;
-
-		//for (double p : getBills().values()) {
-
-		//	sum += p;
-		
-		//}
-		//java future
+				
 		double sum = getBills().values().stream().mapToInt(Number::intValue).sum();
 		return Double.toString(sum);
 	}

@@ -57,9 +57,7 @@ public final class Functions {
 				a[i][j] = Double.valueOf(string[i][j].toString());
 			}
 		}
-		
-		
-		
+			
 		return a;
 		
 	}

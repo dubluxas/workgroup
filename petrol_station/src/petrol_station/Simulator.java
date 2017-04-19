@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Simulator {
 
@@ -24,6 +26,8 @@ public class Simulator {
 
 	private double[][] array;
 	private List<Double> values;
+
+	private double lostmoney;
 
 	public static void main(String[] args) {
 
@@ -55,7 +59,7 @@ public class Simulator {
 			}
 
 			for (step = 0; step < num; step++) {
-				simulateoneStep();
+				simulateoneStep(array);
 			}
 
 			e++;
@@ -66,13 +70,13 @@ public class Simulator {
 	}
 
 	// Simulates one program step
-	private void simulateoneStep() {
+	private void simulateoneStep(double[][] settings) {
 
-		for (int x = 0; x < array[0].length - 1;) {
+		for (int x = 0; x < settings[0].length - 1;) {
 
 			if (step == 0) {
-				rnd.setSeed((int) array[e][x]);
-				saveValues(values, array[e][x]);
+				rnd.setSeed((int) settings[e][x]);
+				saveValues(values, settings[e][x]);
 			}
 
 			double randomNumber = rnd.nextDouble();
@@ -80,23 +84,23 @@ public class Simulator {
 
 			if (station == null) {
 				// System.out.println(array[e][x]);
-				saveValues(values, array[e][x]);
-				station = new Station((int) array[e][x]);
+				saveValues(values, settings[e][x]);
+				station = new Station((int) settings[e][x]);
 
 			}
 			x++;
 
 			if (shop == null) {
-				saveValues(values, array[e][x]);
-				shop = new Shop((int) array[e][x]);
+				saveValues(values, settings[e][x]);
+				shop = new Shop((int) settings[e][x]);
 			}
 			x++;
 
-			double p_ratio = array[e][x];
-			saveValues(values, array[e][x]);
+			double p_ratio = settings[e][x];
+			saveValues(values, settings[e][x]);
 			x++;
-			double q_ratio = array[e][x];
-			saveValues(values, array[e][x]);
+			double q_ratio = settings[e][x];
+			saveValues(values, settings[e][x]);
 
 			if (randomNumber <= p_ratio) {
 				station.getLeastOccupied().addtoQueue(new SmallCar());
@@ -106,7 +110,7 @@ public class Simulator {
 				station.getLeastOccupied().addtoQueue(new Motorbike());
 				// System.out.println("motobyke" + step);
 			}
-			if (randomNumber >= (2 * p_ratio) && randomNumber <= (array[e][x] * 2) + q_ratio) {
+			if (randomNumber >= (2 * p_ratio) && randomNumber <= (p_ratio * 2) + q_ratio) {
 				station.getLeastOccupied().addtoQueue(new FamilySedan());
 				// System.out.println("family" + step);
 			}
@@ -124,14 +128,22 @@ public class Simulator {
 			shop.pay(station.getCustomers(), station.getPumps(), step, 20);
 
 			print();
-			
+
+			// testWait();
+
 		}
 
 	}
 
 	public void print() {
+		
+		//if (e == array.length-1) {
+		//	System.out.println(lostmoney);
+		//}
+
 
 		if (step == (numOfsteps - 1)) {
+
 			// BufferedWriter log = new BufferedWriter(new
 			// OutputStreamWriter(System.out));
 			StringBuilder sb = new StringBuilder();
@@ -144,14 +156,48 @@ public class Simulator {
 			sb.append(getLostVehicles());
 			sb.append("Finance:");
 			sb.append("\nEarned money ").append(Functions.round(shop.toString()));
-			sb.append("\nlost money: ").append(Functions.round(getLostmoney())).append("\n");
-			// sb.setLength(sb.length());
+			sb.append("\nlost money: ").append(Functions.round(String.valueOf(getLostmoney()))).append("\n");
+
+			if (values.get(0).doubleValue() == 10) {
+
+				lostmoney = lostmoney + getLostmoney();
+				System.out.println(lostmoney);
+
+			}
+			
+			if (values.get(0).doubleValue() == 20) {
+
+				lostmoney = lostmoney + getLostmoney();
+				System.out.println(lostmoney);
+
+			}
+			
+			if (values.get(0).doubleValue() == 30) {
+
+				lostmoney = lostmoney + getLostmoney();
+				System.out.println(lostmoney);
+
+			}
+			
 			System.out.println(sb.toString());
 
 			clear();
 
 		}
+		
+		
 
+	}
+
+	// test
+	public void testWait() {
+		final long INTERVAL = 8000;
+		long start = System.nanoTime();
+		long end = 0;
+		do {
+			end = System.nanoTime();
+		} while (start + INTERVAL >= end);
+		// System.out.println(end - start);
 	}
 
 	private void clear() {
@@ -174,11 +220,11 @@ public class Simulator {
 		}
 	}
 
-	private String getLostmoney() {
+	private double getLostmoney() {
 
 		double sum = 0.00;
 		sum = station.getLostVehicles().entrySet().stream().map(Map.Entry::getValue).mapToInt(Number::intValue).sum();
-		return String.valueOf(sum);
+		return sum;
 
 	}
 
