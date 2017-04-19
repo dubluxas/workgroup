@@ -488,7 +488,7 @@ public class Simulator {
 			sb.append("Simulator Counter: ").append((e + 1)).append("\n");
 			sb.append("Seed: ").append(values.get(0)).append("\n");
 			sb.append("Pumps: ").append(values.get(1)).append(" Tills: ").append(values.get(2));
-			sb.append("\np cof: ").append(values.get(3)).append("q cof: ").append(values.get(4));
+			sb.append("\np cof: ").append(values.get(3)).append(" q cof: ").append(values.get(4));
 			sb.append("\n=========================\n\n");
 			sb.append(getLostVehicles());
 			sb.append("Finance:");
