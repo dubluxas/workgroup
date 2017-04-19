@@ -1,6 +1,9 @@
 package petrol_station;
 
 import java.util.Map.Entry;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
@@ -124,7 +127,11 @@ public class Simulator {
 			shop.pay(station.getCustomers(), station.getPumps(), step, 20);
 
 			print();
-
+			//if(!(station.getCustomers() != null) || station != null){
+			//System.out.println(station.getCustomers().size());
+			//}else{
+			//	System.out.println("ddd");
+			//}
 		}
 
 	}
@@ -132,10 +139,7 @@ public class Simulator {
 	public void print() {
 
 		if (step == (numOfsteps - 1)) {
-
-			// I have used string builder not StringBuffer because it works
-			// faster.
-			// StringBuffer is synchronised, we do not need such a future.
+			//BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
 			StringBuilder sb = new StringBuilder();
 			sb.append("=========================\n");
 			sb.append("Simulator Counter: ").append((e + 1)).append("\n");
@@ -147,8 +151,9 @@ public class Simulator {
 			sb.append("Finance:");
 			sb.append("\nEarned money ").append(Functions.round(shop.toString()));
 			sb.append("\nlost money: ").append(Functions.round(getLostmoney())).append("\n");
+			//sb.setLength(sb.length());
 			System.out.println(sb.toString());
-
+			
 			clear();
 
 		}

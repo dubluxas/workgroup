@@ -2,9 +2,13 @@ package petrol_station;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * @author Justas Petrusonis
@@ -18,6 +22,7 @@ public class Station {
 	private List<Pump> pumps;
 	private boolean trucks = false;
 	private Map<Driver, Integer> drivers;
+	private boolean newVehicle;
 
 	/**
 	 * This creates a specific number of pumps.
@@ -56,6 +61,7 @@ public class Station {
 			pumps.add(pump);
 
 			this.trucks = false;
+			drivers = new HashMap<>();
 		}
 
 	}
@@ -66,19 +72,9 @@ public class Station {
 		pump = new Pump();
 		pumps.add(pump);
 		trucks = true;
+		drivers = new HashMap<>();
 
 	}
-
-	//////////////////
-	// test methods
-	public Pump getPump1() {
-		return pumps.get(0);
-	}
-
-	public Pump getPump2() {
-		return pumps.get(1);
-	}
-	////////
 
 	/**
 	 * Get the pump which is least occupied.
@@ -87,6 +83,12 @@ public class Station {
 	 */
 
 	public Pump getLeastOccupied() {
+
+		//new vehicle boolean was created to reduce program run time.
+		//get customers code will be executed if new vehicle arrived else just return old list of drivers.
+		//used program visualVM to check memory usage.
+		//program run time was reduced from 16s to 6s
+		newVehicle = true;
 
 		int index = 0;
 
@@ -116,20 +118,23 @@ public class Station {
 	 * @return map which contains driver and fuel in gallons.
 	 */
 
-	
 	public Map<Driver, Integer> getCustomers() {
 
-		drivers = new HashMap<>();
+		if (newVehicle) {
 
-		for (Pump p : pumps) {
+			for (Pump p : pumps) {
 
-			for (Entry<Driver, Integer> entry : p.getDriverInfo().entrySet()) {
-				Driver key = entry.getKey();
-				Integer value = entry.getValue();
-				if (!drivers.containsKey(key)) {
+				for (Entry<Driver, Integer> entry : p.getDriverInfo().entrySet()) {
+					Driver key = entry.getKey();
+					Integer value = entry.getValue();
+
 					drivers.put(key, value);
+
 				}
 			}
+			
+			newVehicle = false;
+
 		}
 
 		return drivers;
@@ -144,15 +149,11 @@ public class Station {
 
 		if (!driverInfo.isEmpty()) {
 
-			// Iterator<Pump> itr = pumps.iterator();
-
 			for (Pump p : pumps) {
 
 				if (p.getVehicleQueue().peek() != null) {
 
 					if (driverInfo.containsKey(p.getVehicleQueue().peek().getDriver())) {
-
-						// if(pump.getVehicleQueue().poll() != null){
 
 						p.getVehicleQueue().poll();
 
@@ -179,6 +180,9 @@ public class Station {
 
 		}
 
+		// pumps.stream().flatMap(p -> p.getLostVehicles()
+		// .stream()).collect(Collectors.toMap(Shop.getPricePerDriver(v.getTankSize()
+		// - v.getFuelInTank(),Shop:get))
 		return lostMoney;
 
 	}
@@ -205,12 +209,11 @@ public class Station {
 	public boolean getAllowTrucks() {
 		return trucks;
 	}
-	
-	public void clear(){
+
+	public void clear() {
 		pump = null;
 		pumps = null;
-		trucks = false;
-		drivers = null;
+
 	}
 
 }
