@@ -52,7 +52,7 @@ public class Shop {
 		tills.add(till);
 
 	}
-
+	//Method is not used.
 	public void addcustomers(HashMap<Driver, Integer> cust) {
 		ShopingArea = new HashMap<>();
 
@@ -73,7 +73,7 @@ public class Shop {
 	 * 
 	 * @return the customers.
 	 */
-
+	//Method is not used.
 	public Map<Driver, Integer> getCustomerInfo() {
 
 		return ShopingArea;
@@ -90,12 +90,13 @@ public class Shop {
 		return pricePerGallon;
 	}
 
+	//add driver to to least occupied queue
 	public void addCustomer(Station station) {
 
 		if (!station.getCustomers().isEmpty()) {
 
 			for (Entry<Driver, Integer> driver : station.getCustomers().entrySet()) {
-
+				//d arraylist is used to make sure that the same customer not gonna be added to the queue
 				if (!d.contains(driver.getKey())) {
 					getLeastOccupied().addtoQueue(driver.getKey());
 					d.add(driver.getKey());

@@ -60,8 +60,8 @@ public class SimulatorGUI extends Simulator {
 	///////////////////////////////
 	private JCheckBox allowTrucks;
 
-	public SimulatorGUI(int seed) {
-		super(seed);
+	public SimulatorGUI() {
+		//super(seed);
 			/*		
 		  try {
 		        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -305,7 +305,7 @@ public class SimulatorGUI extends Simulator {
 
 	public static void main(String[] args) {
 
-		SimulatorGUI s = new SimulatorGUI(1000);
+		SimulatorGUI s = new SimulatorGUI();
 		s.mainWindow();
 		//s.settingsWindow();
 		s.makeVisible();
