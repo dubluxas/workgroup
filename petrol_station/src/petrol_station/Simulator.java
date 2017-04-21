@@ -122,7 +122,7 @@ public class Simulator {
 
 			shop.addCustomer(station);
 
-			shop.pay(station.getCustomers(), station.getPumps(), step, 20);
+			shop.pay(station.getDrivers(), station.getPumps(), step, 20);
 
 			// testWait();
 

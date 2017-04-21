@@ -21,7 +21,7 @@ public class Shop {
 	private List<Till> tills;
 	private Map<Driver, Integer> ShopingArea;
 	private Map<Driver, Double> bill;
-	private List<Driver> d = new ArrayList<>();
+	private List<Driver> customers = new ArrayList<>();
 	private int stepp = 0;
 
 	/**
@@ -70,8 +70,8 @@ public class Shop {
 
 	/**
 	 * Get the customers' information.
-	 * 
-	 * @return the customers.
+	 * This method currently is not in used.
+	 * @return the customers in the shop, but not in queue.
 	 */
 	// Method is not used.
 	public Map<Driver, Integer> getCustomerInfo() {
@@ -91,16 +91,20 @@ public class Shop {
 	}
 
 	// add driver to to least occupied queue
+	/**
+	 * Method is responsible to add new customers to one of least occupied queues in the shop.
+	 * @param station Takes station as a parameter to get drivers from station.
+	 */
 	public void addCustomer(Station station) {
 
-		if (!station.getCustomers().isEmpty()) {
+		if (!station.getDrivers().isEmpty()) {
 
-			for (Entry<Driver, Integer> driver : station.getCustomers().entrySet()) {
+			for (Entry<Driver, Integer> driver : station.getDrivers().entrySet()) {
 				// d arrayList is used to make sure that the same customer not
 				// going to be added to the queue?!
-				if (!d.contains(driver.getKey())) {
+				if (!customers.contains(driver.getKey())) {
 					getLeastOccupied().addtoQueue(driver.getKey());
-					d.add(driver.getKey());
+					customers.add(driver.getKey());
 
 				}
 
@@ -110,6 +114,10 @@ public class Shop {
 
 	}
 
+	/**
+	 * The method is responsible to return least occupied shop queue. 
+	 * @return returns Till that is least occupied.
+	 */
 	public Till getLeastOccupied() {
 
 		int index = 0;
@@ -128,6 +136,14 @@ public class Shop {
 
 		return tills.get(index);
 	}
+	
+	/**
+	 * 
+	 * @param driverInfo
+	 * @param pumps
+	 * @param step
+	 * @param stepstoSkip
+	 */
 
 	@SuppressWarnings("boxing")
 	public void pay(Map<Driver, Integer> driverInfo, List<Pump> pumps, int step, int stepstoSkip) {
@@ -150,6 +166,7 @@ public class Shop {
 
 						bill.put(t.getDriverQueue().peek(),
 								getPricePerDriver(driverInfo.get(t.getDriverQueue().peek()), getPrice()));
+						//System.out.println(t.getDriverQueue().peek());
 					}
 				}
 
@@ -184,7 +201,7 @@ public class Shop {
 	}
 
 	public static double getPricePerDriver(int gallons, double price) {
-		double result = gallons + price;
+		double result = gallons * price;
 		return result;
 	}
 

@@ -117,13 +117,13 @@ public class Station {
 	}
 
 	/**
-	 * Get the information from all pumps about driver
+	 * Get the information from all pumps about drivers.
 	 * 
 	 * 
 	 * @return map which contains driver and fuel in gallons.
 	 */
 
-	public Map<Driver, Integer> getCustomers() {
+	public Map<Driver, Integer> getDrivers() {
 
 		if (newVehicle) {
 
