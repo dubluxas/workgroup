@@ -1,7 +1,5 @@
 package petrol_station;
 
-import java.util.Random;
-
 /** 
  * @author Justas Petrusonis
  * @author Jasmin Sabaka
@@ -11,9 +9,7 @@ import java.util.Random;
 
 public class Truck extends Vehicle {
 	
-	private static int TANKSIZE;
-	private int fuelInTank;
-	private static double UNITSIZE = 2;
+	
 	private TruckDriver driver;
 	
 	/**
@@ -23,9 +19,9 @@ public class Truck extends Vehicle {
 
 	public Truck() {
 
-		rnd = new Random();
-		TANKSIZE = rnd.nextInt(40 - 30 + 1) + 30;
-		fuelInTank = rnd.nextInt(TANKSIZE - 1) + 1;
+		UNITSIZE = 2;
+		TANKSIZE = Functions.getRandom(30,40);
+		fuelInTank = Functions.getRandom(1,TANKSIZE);
 		driver = new TruckDriver();
 	}
 	
@@ -37,10 +33,9 @@ public class Truck extends Vehicle {
 	 */
 
 	public Truck(int min, int max) {
-
-		rnd = new Random();
-		TANKSIZE = rnd.nextInt(max - min + 1) + min;
-		fuelInTank = rnd.nextInt(TANKSIZE - 1) + 1;
+		
+		TANKSIZE = Functions.getRandom(min,max);
+		fuelInTank = Functions.getRandom(1,TANKSIZE);
 		driver = new TruckDriver();
 
 	}

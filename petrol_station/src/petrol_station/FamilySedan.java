@@ -1,7 +1,5 @@
 package petrol_station;
 
-import java.util.Random;
-
 /**
  * Familysedan  is concrete class.
  * @author Justas Petrusonis
@@ -10,13 +8,7 @@ import java.util.Random;
  * */
 
 public class FamilySedan extends Vehicle {
-	
-	private static int TANKSIZE;
-	private int fuelInTank;
-	private final static double UNITSIZE = 1.5;
-	
-	//private Driver driver;
-	
+		
 	private CarDriver driver;
 	
 	/**
@@ -26,9 +18,9 @@ public class FamilySedan extends Vehicle {
 
 	public FamilySedan() {
 
-		rnd = new Random();
-		TANKSIZE = rnd.nextInt(40 - 30 + 1) + 30;
-		fuelInTank = rnd.nextInt(TANKSIZE - 1) + 1;
+		UNITSIZE = 1.5;
+		TANKSIZE = Functions.getRandom(12,18);
+		fuelInTank = Functions.getRandom(1,TANKSIZE);
 		driver = new CarDriver();
 		
 	}
@@ -42,9 +34,9 @@ public class FamilySedan extends Vehicle {
 	
 	public FamilySedan(int min, int max) {
 
-		rnd = new Random();
-		TANKSIZE = rnd.nextInt(18 - 12 + 1) + min;
-	    fuelInTank = rnd.nextInt(TANKSIZE - 1) + 1;
+		UNITSIZE = 1.5;
+		TANKSIZE = Functions.getRandom(12,18);
+	    fuelInTank = Functions.getRandom(1,TANKSIZE);
 	    driver = new CarDriver();
 	}
 

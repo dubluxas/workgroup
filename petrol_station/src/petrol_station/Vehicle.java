@@ -1,7 +1,5 @@
 package petrol_station;
 
-import java.util.Random;
-
 /**
  * Vehicle is an abstract class which have several concrete classes.
  * It does not contain a code for concrete classes
@@ -11,8 +9,10 @@ import java.util.Random;
  * **/
 
 public abstract class Vehicle {
-	
-	protected Random rnd;
+		
+	protected int fuelInTank;
+	protected static int TANKSIZE;
+	protected static double UNITSIZE;
 		
 	public abstract int getFuelInTank();
 	public abstract int getTankSize();

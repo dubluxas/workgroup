@@ -1,6 +1,5 @@
 package petrol_station;
 
-import java.util.Random;
 
 /**
  * @author Justas Petrusonis
@@ -10,9 +9,6 @@ import java.util.Random;
 
 public class SmallCar extends Vehicle {
 
-	private static int TANKSIZE;
-	private int fuelInTank;
-	private final static double UNITSIZE = 1;
 	private CarDriver driver;
 	
 	/**
@@ -21,10 +17,10 @@ public class SmallCar extends Vehicle {
 	 */
 
 	public SmallCar() {
-
-		rnd = new Random();
-		TANKSIZE = rnd.nextInt(9 - 7 + 1) + 7;
-		fuelInTank = rnd.nextInt(TANKSIZE - 1) + 1;
+		
+		UNITSIZE = 1;
+		TANKSIZE = Functions.getRandom(7,9);
+		fuelInTank = Functions.getRandom(1,TANKSIZE);
 		driver = new CarDriver();
 
 	}
@@ -37,10 +33,10 @@ public class SmallCar extends Vehicle {
 	 */
 
 	public SmallCar(int min, int max) {
-
-		rnd = new Random();
-		TANKSIZE = rnd.nextInt(max - min + 1) + min;
-		fuelInTank = rnd.nextInt(TANKSIZE - 1) + 1;
+		
+		UNITSIZE = 1;
+		TANKSIZE = Functions.getRandom(min,max);
+		fuelInTank = Functions.getRandom(1,TANKSIZE);
 		driver = new CarDriver();
 
 	}
