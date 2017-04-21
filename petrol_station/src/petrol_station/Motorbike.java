@@ -8,8 +8,8 @@ package petrol_station;
 
 public class Motorbike extends Vehicle {
 	
-	private CarDriver driver;
-	
+	private Driver driver;
+	private static int TANKSIZE;
 	/**
 	 * This constructs a Motorbike with a random tank size and specific unit size. 
 	 * It also constructs a driver for this Motorbike.
@@ -81,7 +81,7 @@ public class Motorbike extends Vehicle {
 	 * @return The driver of this FamilySedan.
 	 */
 	
-	public CarDriver getDriver(){
+	public Driver getDriver(){
 		return driver;
 	}
 	

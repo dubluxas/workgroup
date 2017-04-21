@@ -9,8 +9,8 @@ package petrol_station;
 
 public class SmallCar extends Vehicle {
 
-	private CarDriver driver;
-	
+	private Driver driver;
+		
 	/**
 	 * This constructs a SmallCar with a random tank size and specific unit size. 
 	 * It also constructs a driver for this SmallCar.
@@ -19,8 +19,8 @@ public class SmallCar extends Vehicle {
 	public SmallCar() {
 		
 		UNITSIZE = 1;
-		TANKSIZE = Functions.getRandom(7,9);
-		fuelInTank = Functions.getRandom(1,TANKSIZE);
+		tanksize = Functions.getRandom(7,9);
+		fuelInTank = Functions.getRandom(1,tanksize);
 		driver = new CarDriver();
 
 	}
@@ -35,8 +35,8 @@ public class SmallCar extends Vehicle {
 	public SmallCar(int min, int max) {
 		
 		UNITSIZE = 1;
-		TANKSIZE = Functions.getRandom(min,max);
-		fuelInTank = Functions.getRandom(1,TANKSIZE);
+		tanksize = Functions.getRandom(min,max);
+		fuelInTank = Functions.getRandom(1,tanksize);
 		driver = new CarDriver();
 
 	}
@@ -47,7 +47,7 @@ public class SmallCar extends Vehicle {
 	 */
 
 	public int getTankSize() {
-		return TANKSIZE;
+		return tanksize;
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class SmallCar extends Vehicle {
 	 * @return The driver of this SmallCar.
 	 */
 
-	public CarDriver getDriver() {
+	public Driver getDriver() {
 		return driver;
 	}
 	
@@ -92,7 +92,7 @@ public class SmallCar extends Vehicle {
 	 */
 
 	public boolean haveSpaceInTank() {
-		if (fuelInTank < TANKSIZE) {
+		if (fuelInTank < tanksize) {
 			return true;
 		}
 		return false;

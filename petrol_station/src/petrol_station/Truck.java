@@ -10,7 +10,7 @@ package petrol_station;
 public class Truck extends Vehicle {
 	
 	
-	private TruckDriver driver;
+	private Driver driver;
 	
 	/**
 	 * This constructs a Truck with a random tank size and a specified unit size.
@@ -20,8 +20,8 @@ public class Truck extends Vehicle {
 	public Truck() {
 
 		UNITSIZE = 2;
-		TANKSIZE = Functions.getRandom(30,40);
-		fuelInTank = Functions.getRandom(1,TANKSIZE);
+		tanksize = Functions.getRandom(30,40);
+		fuelInTank = Functions.getRandom(1,tanksize);
 		driver = new TruckDriver();
 	}
 	
@@ -34,8 +34,8 @@ public class Truck extends Vehicle {
 
 	public Truck(int min, int max) {
 		
-		TANKSIZE = Functions.getRandom(min,max);
-		fuelInTank = Functions.getRandom(1,TANKSIZE);
+		tanksize = Functions.getRandom(min,max);
+		fuelInTank = Functions.getRandom(1,tanksize);
 		driver = new TruckDriver();
 
 	}
@@ -46,7 +46,7 @@ public class Truck extends Vehicle {
 	 */
 
 	public int getTankSize() {
-		return TANKSIZE;
+		return tanksize;
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class Truck extends Vehicle {
 	 * @return The driver of this FamilySedan.
 	 */
 	
-	public TruckDriver getDriver(){
+	public Driver getDriver(){
 		return driver;
 	}
 
@@ -92,7 +92,7 @@ public class Truck extends Vehicle {
 	 */
 	
 	public boolean haveSpaceInTank() {
-		if (fuelInTank < TANKSIZE) {
+		if (fuelInTank < tanksize) {
 			return true;
 		}
 		return false;

@@ -178,7 +178,7 @@ public class Station {
 		for (Pump p : pumps) {
 
 			for (Vehicle v : p.getLostVehicles()) {
-				lostVehicles.put(v, Shop.getPricePerDriver(v.getTankSize() - v.getFuelInTank(), Shop.getPrice()));
+				lostVehicles.put(v, Shop.getPricePerDriver((v.getTankSize() - v.getFuelInTank()), Shop.getPrice()));
 			}
 
 		}

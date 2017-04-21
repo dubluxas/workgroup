@@ -1,12 +1,8 @@
 package petrol_station;
 
-import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Arrays;
-
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 public class Simulator {
@@ -163,7 +159,7 @@ public class Simulator {
 
 					System.out.println("|seed:" + "|" + (int) information.get(i).doubleValue() + "|"
 							+ Functions.round(String.valueOf(information.get(i + 1))) + "|"
-							+ Functions.round(String.valueOf(information.get(i + 1))) + "|");
+							+ Functions.round(String.valueOf(information.get(i + 2))) + "|");
 
 				}
 
@@ -206,12 +202,12 @@ public class Simulator {
 
 		}
 
-		//if (e == array.length - 1) {
-		//	for (int i = 0; i < arr.size(); i++) {
-		//		System.out.println(arr.get(i));
-		//	}
+		// if (e == array.length - 1) {
+		// for (int i = 0; i < arr.size(); i++) {
+		// System.out.println(arr.get(i));
+		// }
 
-		//}
+		// }
 
 		/*
 		 * for (int i = 1; i < arr.size()-2;) { System.out.println(i);

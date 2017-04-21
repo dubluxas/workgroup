@@ -11,7 +11,7 @@ package petrol_station;
 public abstract class Vehicle {
 		
 	protected int fuelInTank;
-	protected static int TANKSIZE;
+	protected int tanksize;
 	protected static double UNITSIZE;
 		
 	public abstract int getFuelInTank();
