@@ -182,11 +182,36 @@ public class Station {
 			}
 
 		}
-
-		// pumps.stream().flatMap(p -> p.getLostVehicles()
-		// .stream()).collect(Collectors.toMap(Shop.getPricePerDriver(v.getTankSize()
-		// - v.getFuelInTank(),Shop:get))
+		
 		return lostVehicles;
+
+	}
+	
+	public int[] getLostVehiclesCount() {
+
+		int w, x, y, z;
+		w = x = y = z = 0;
+
+		for (Entry<Vehicle, Double> m : getLostVehicles().entrySet()) {
+
+			if (m.getKey() instanceof Motorbike) {
+				w++;
+			}
+			if (m.getKey() instanceof SmallCar) {
+				x++;
+			}
+			if (m.getKey() instanceof FamilySedan) {
+				y++;
+			}
+			if (m.getKey() instanceof Truck) {
+				z++;
+			}
+
+		}
+
+		int[] result = { w, x, y, z };
+
+		return result;
 
 	}
 
@@ -216,6 +241,14 @@ public class Station {
 	public void clear() {
 		pump = null;
 		pumps = null;
+
+	}
+	
+	public double getLostmoney() {
+
+		double sum = 0.00;
+		sum = getLostVehicles().entrySet().stream().map(Map.Entry::getValue).mapToDouble(Double::doubleValue).sum();
+		return sum;
 
 	}
 

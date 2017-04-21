@@ -1,33 +1,29 @@
 package petrol_station;
 
-import java.util.Map.Entry;
+import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Simulator {
 
 	protected static int numOfsteps = 1440;
-	protected static double p = 0.02;
-	protected static double q = 0.02;
+	// protected static double p = 0.02;
+	// protected static double q = 0.02;
 	protected static double t = 0.05;
 	private int counter;
-	int e = 0;
+	private int e = 0;
 	private static int step;
-
 	private Station station;
 	private Shop shop;
-
 	private Random rnd;
-
 	private double[][] array;
 	private List<Double> values;
-
-	private double lostmoney;
+	private List<Double> information = new ArrayList<>();
 
 	public static void main(String[] args) {
 
@@ -51,7 +47,7 @@ public class Simulator {
 		long start = System.currentTimeMillis();
 
 		array = Functions.loadsettings(Functions.readSettings());
-		System.out.println(array);
+		// System.out.println(array);
 		while (e < array.length) {
 
 			if (step == num - 1 && e < array.length) {
@@ -66,6 +62,7 @@ public class Simulator {
 		}
 
 		long end = System.currentTimeMillis();
+		System.out.println();
 		System.out.println("Execution time: " + (double) (end - start) / 1000 + " s.");
 	}
 
@@ -127,71 +124,117 @@ public class Simulator {
 
 			shop.pay(station.getCustomers(), station.getPumps(), step, 20);
 
-			print();
-
 			// testWait();
+
+			// System.out.println();
+
+			print(station, shop);
 
 		}
 
 	}
 
-	public void print() {
-		
-		//if (e == array.length-1) {
-		//	System.out.println(lostmoney);
-		//}
-
+	public void print(Station sta, Shop sh) {
 
 		if (step == (numOfsteps - 1)) {
 
-			// BufferedWriter log = new BufferedWriter(new
-			// OutputStreamWriter(System.out));
 			StringBuilder sb = new StringBuilder();
 			sb.append("=========================\n");
 			sb.append("Simulator Counter: ").append((e + 1)).append("\n");
-			sb.append("Seed: ").append(values.get(0)).append("\n");
-			sb.append("Pumps: ").append(values.get(1)).append(" Tills: ").append(values.get(2));
+			sb.append("Seed: ").append((int) values.get(0).doubleValue()).append("\n");
+			sb.append("Pumps: ").append((int) values.get(1).doubleValue()).append(" Tills: ")
+					.append((int) values.get(2).doubleValue());
 			sb.append("\np cof: ").append(values.get(3)).append(" q cof: ").append(values.get(4));
 			sb.append("\n=========================\n\n");
-			sb.append(getLostVehicles());
+			sb.append("Lost Vehicles:\n");
+			sb.append("MotoBike: ").append(sta.getLostVehiclesCount()[0]).append("\n");
+			sb.append("Small Car: ").append(sta.getLostVehiclesCount()[1]).append("\n");
+			sb.append("Family Sedan: ").append(sta.getLostVehiclesCount()[2]).append("\n");
+			sb.append("Truck: ").append(sta.getLostVehiclesCount()[3]).append("\n");
 			sb.append("Finance:");
-			sb.append("\nEarned money ").append(Functions.round(shop.toString()));
-			sb.append("\nlost money: ").append(Functions.round(String.valueOf(getLostmoney()))).append("\n");
+			sb.append("\nEarned money ").append(Functions.round(String.valueOf(sh.getEarnedmoney())));
+			sb.append("\nlost money: ").append(Functions.round(String.valueOf(sta.getLostmoney()))).append("\n");
 
-			if (values.get(0).doubleValue() == 10) {
-
-				lostmoney = lostmoney + getLostmoney();
-				System.out.println(lostmoney);
-
-			}
-			
-			if (values.get(0).doubleValue() == 20) {
-
-				lostmoney = lostmoney + getLostmoney();
-				System.out.println(lostmoney);
-
-			}
-			
-			if (values.get(0).doubleValue() == 30) {
-
-				lostmoney = lostmoney + getLostmoney();
-				System.out.println(lostmoney);
-
-			}
-			
 			System.out.println(sb.toString());
 
-			clear();
+			if (e == array.length - 1) {
+
+				for (int i = 0; i < information.size() - 1; i += 3) {
+
+					System.out.println("|seed:" + "|" + (int) information.get(i).doubleValue() + "|"
+							+ Functions.round(String.valueOf(information.get(i + 1))) + "|"
+							+ Functions.round(String.valueOf(information.get(i + 1))) + "|");
+
+				}
+
+			}
+
+			try {
+				getLostMoneyBySeed(array[e][0], information, station, shop);
+				// Thread.sleep(500);
+			} finally {
+				clear();
+			}
 
 		}
-		
-		
 
 	}
 
-	// test
+	private void getLostMoneyBySeed(double seed, List<Double> arr, Station sta, Shop sh) {
+
+		double vehicle1Sum = 0;
+
+		if (arr.contains(Double.valueOf(seed))) {
+
+			double earnedSum = arr.get(arr.indexOf(Double.valueOf(seed)) + 1).doubleValue();
+			double lostSum = arr.get(arr.indexOf(Double.valueOf(seed)) + 2).doubleValue();
+			double earnedPerRound = sh.getEarnedmoney();
+			double lostPerRound = sta.getLostmoney();
+			earnedSum += earnedPerRound;
+			lostSum += lostPerRound;
+			arr.set(arr.indexOf(Double.valueOf(seed)) + 1, Double.valueOf(earnedSum));
+			arr.set(arr.indexOf(Double.valueOf(seed)) + 2, Double.valueOf(lostSum));
+
+		} else {
+
+			Double s = Double.valueOf(seed);
+			Double earnedSum = Double.valueOf(sh.getEarnedmoney());
+			Double lostSum = Double.valueOf(sta.getLostmoney());
+			arr.add(s);
+			arr.add(earnedSum);
+			arr.add(lostSum);
+
+		}
+
+		//if (e == array.length - 1) {
+		//	for (int i = 0; i < arr.size(); i++) {
+		//		System.out.println(arr.get(i));
+		//	}
+
+		//}
+
+		/*
+		 * for (int i = 1; i < arr.size()-2;) { System.out.println(i);
+		 * if(i!=1){i++;} Double earnResult =
+		 * Double.valueOf(arr.get(i).doubleValue() / (arr.size() / 3));
+		 * arr.set(i, earnResult); i++; Double lostResult =
+		 * Double.valueOf(arr.get(i+1).doubleValue() / (arr.size() / 3));
+		 * arr.set(i+1, lostResult);
+		 * 
+		 * 
+		 * //System.out.println("lost " + lostResult);
+		 * ///System.out.println("earned " + earnResult);
+		 * 
+		 * // System.out.println(i);
+		 * 
+		 * } }
+		 */
+
+	}
+
+	// to slow down the function.
 	public void testWait() {
-		final long INTERVAL = 8000;
+		final long INTERVAL = 40;
 		long start = System.nanoTime();
 		long end = 0;
 		do {
@@ -203,12 +246,10 @@ public class Simulator {
 	private void clear() {
 
 		values.clear();
-		station.clear();
-		shop.clear();
-		values.clear();
 		shop = null;
 		station = null;
 		counter = 0;
+
 	}
 
 	@SuppressWarnings("boxing")
@@ -218,49 +259,6 @@ public class Simulator {
 			arr.add(value);
 			counter++;
 		}
-	}
-
-	private double getLostmoney() {
-
-		double sum = 0.00;
-		sum = station.getLostVehicles().entrySet().stream().map(Map.Entry::getValue).mapToInt(Number::intValue).sum();
-		return sum;
-
-	}
-
-	private String getLostVehicles() {
-
-		int w = 0;
-		int x = 0;
-		int y = 0;
-		int z = 0;
-
-		StringBuffer sb = new StringBuffer("Lost Vehicles:\n");
-
-		for (Entry<Vehicle, Double> m : station.getLostVehicles().entrySet()) {
-
-			if (m.getKey() instanceof Motorbike) {
-				w++;
-			}
-			if (m.getKey() instanceof SmallCar) {
-				x++;
-			}
-			if (m.getKey() instanceof FamilySedan) {
-				y++;
-			}
-			if (m.getKey() instanceof Truck) {
-				z++;
-			}
-
-		}
-
-		sb.append("Motorbike: ").append(w).append("\n");
-		sb.append("Small Car: ").append(x).append("\n");
-		sb.append("Family Sedan: ").append(y).append("\n");
-		sb.append("Truck: ").append(z).append("\n");
-
-		return sb.toString();
-
 	}
 
 }

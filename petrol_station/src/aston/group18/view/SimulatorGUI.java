@@ -1,4 +1,4 @@
-package petrol_station;
+package aston.group18.view;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import petrol_station.Simulator;
 
 public class SimulatorGUI extends Simulator {
 

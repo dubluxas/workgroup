@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
-
 /**
  * @author Justas Petrusonis
  * @author Jasmin Sabaka
@@ -43,8 +42,6 @@ public class Shop {
 		}
 
 	}
-	
-	
 
 	public Shop() {
 
@@ -54,7 +51,8 @@ public class Shop {
 		tills.add(till);
 
 	}
-	//Method is not used.
+
+	// Method is not used.
 	public void addcustomers(HashMap<Driver, Integer> cust) {
 		ShopingArea = new HashMap<>();
 
@@ -75,7 +73,7 @@ public class Shop {
 	 * 
 	 * @return the customers.
 	 */
-	//Method is not used.
+	// Method is not used.
 	public Map<Driver, Integer> getCustomerInfo() {
 
 		return ShopingArea;
@@ -92,13 +90,14 @@ public class Shop {
 		return pricePerGallon;
 	}
 
-	//add driver to to least occupied queue
+	// add driver to to least occupied queue
 	public void addCustomer(Station station) {
 
 		if (!station.getCustomers().isEmpty()) {
 
 			for (Entry<Driver, Integer> driver : station.getCustomers().entrySet()) {
-				//d arrayList is used to make sure that the same customer not going to be added to the queue?!
+				// d arrayList is used to make sure that the same customer not
+				// going to be added to the queue?!
 				if (!d.contains(driver.getKey())) {
 					getLeastOccupied().addtoQueue(driver.getKey());
 					d.add(driver.getKey());
@@ -130,18 +129,16 @@ public class Shop {
 		return tills.get(index);
 	}
 
-		
-
 	@SuppressWarnings("boxing")
 	public void pay(Map<Driver, Integer> driverInfo, List<Pump> pumps, int step, int stepstoSkip) {
-		
+
 		if (stepp == 0) {
 			stepp = step;
 		}
 
 		if (((stepp + stepstoSkip) - 1) == step) {
 
-			//System.out.println("executed: " + step);
+			// System.out.println("executed: " + step);
 
 			for (Iterator<Till> itr = tills.iterator(); itr.hasNext();) {
 
@@ -155,7 +152,7 @@ public class Shop {
 								getPricePerDriver(driverInfo.get(t.getDriverQueue().peek()), getPrice()));
 					}
 				}
-				
+
 				delVehicle(pumps, driverInfo, t);
 
 			}
@@ -163,12 +160,11 @@ public class Shop {
 			stepp = 0;
 
 		}
-	
 
 	}
-	
-	private void delVehicle(List<Pump> pumps , Map<Driver, Integer> driverInfo, Till t){
-		
+
+	private void delVehicle(List<Pump> pumps, Map<Driver, Integer> driverInfo, Till t) {
+
 		for (Iterator<Pump> itr2 = pumps.iterator(); itr2.hasNext();) {
 
 			Pump pump = itr2.next();
@@ -180,7 +176,7 @@ public class Shop {
 					pump.getVehicleQueue().poll();
 					t.getDriverQueue().poll();
 					driverInfo.remove(t.getDriverQueue().peek());
-					
+
 				}
 
 			}
@@ -196,19 +192,18 @@ public class Shop {
 		return bill;
 	}
 
-	
-	public String toString() {
-				
-		double sum = getBills().values().stream().mapToInt(Number::intValue).sum();
-		return Double.toString(sum);
+	public double getEarnedmoney() {
+
+		double sum = getBills().values().stream().mapToDouble(Double::doubleValue).sum();
+		return sum;
 	}
-	
-	public void clear(){
-		
-		tills=null;
-		ShopingArea=null;
-		bill=null;
-		
+
+	public void clear() {
+
+		tills = null;
+		ShopingArea = null;
+		bill = null;
+
 	}
 
 }

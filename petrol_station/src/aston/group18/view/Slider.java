@@ -1,4 +1,4 @@
-package petrol_station;
+package aston.group18.view;
 
 import java.awt.*;
 import java.util.Hashtable;
