@@ -4,6 +4,8 @@ import java.util.Random;
 
 /**
  * Vehicle is an abstract class which have several concrete classes.
+ * It does not contain a code for concrete classes
+ * Only method signatures
  * @author Justas Petrusonis
  * @version 1.0, 03/09/17
  * **/

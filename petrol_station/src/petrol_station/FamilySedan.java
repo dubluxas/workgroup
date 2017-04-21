@@ -3,6 +3,7 @@ package petrol_station;
 import java.util.Random;
 
 /**
+ * Familysedan  is concrete class.
  * @author Justas Petrusonis
  * @author Jasmin Sabaka
  * @version 1.0

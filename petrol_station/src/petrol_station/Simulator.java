@@ -46,7 +46,7 @@ public class Simulator {
 
 		long start = System.currentTimeMillis();
 
-		array = Functions.loadsettings(Functions.readSettings());
+		array = Functions.loadsettings(Functions.readSettings("text.txt", 5));
 		// System.out.println(array);
 		while (e < array.length) {
 
