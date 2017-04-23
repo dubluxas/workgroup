@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import petrol_station.Simulator;
+import defaultPackage.Simulator;
 
 public class SimulatorGUI extends Simulator {
 

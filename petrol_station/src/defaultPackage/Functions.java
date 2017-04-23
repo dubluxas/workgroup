@@ -1,4 +1,4 @@
-package petrol_station;
+package defaultPackage;
 
 /**
  * This class holds a static methods

@@ -1,10 +1,13 @@
-package petrol_station;
+package aston.group18.station;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+
+import aston.group18.vehicle.Driver;
+import aston.group18.vehicle.Vehicle;
 
 /**
  * <h3>Pump class</h3>

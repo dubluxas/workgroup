@@ -1,4 +1,6 @@
-package petrol_station;
+package aston.group18.vehicle;
+
+import defaultPackage.Functions;
 
 /**
  * @author Justas Petrusonis
@@ -20,7 +22,7 @@ public class Motorbike extends Vehicle {
 		UNITSIZE = 0.75;
 		TANKSIZE = 5;
 		fuelInTank = Functions.getRandom(1,TANKSIZE);
-		driver = new CarDriver();
+		driver = new Driver();
 
 	}
 	
@@ -36,7 +38,7 @@ public class Motorbike extends Vehicle {
 		UNITSIZE = 0.75;
 		TANKSIZE = Functions.getRandom(min,max);
 		fuelInTank = Functions.getRandom(min,TANKSIZE);
-		driver = new CarDriver();
+		driver = new Driver();
 
 	}
 

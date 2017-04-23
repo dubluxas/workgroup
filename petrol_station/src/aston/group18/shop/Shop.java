@@ -1,4 +1,4 @@
-package petrol_station;
+package aston.group18.shop;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
+
+import aston.group18.station.Pump;
+import aston.group18.station.Station;
+import aston.group18.vehicle.Driver;
 
 /**
  * @author Justas Petrusonis
@@ -154,8 +158,6 @@ public class Shop {
 
 		if (((stepp + stepstoSkip) - 1) == step) {
 
-			// System.out.println("executed: " + step);
-
 			for (Iterator<Till> itr = tills.iterator(); itr.hasNext();) {
 
 				Till t = itr.next();
@@ -166,7 +168,6 @@ public class Shop {
 
 						bill.put(t.getDriverQueue().peek(),
 								getPricePerDriver(driverInfo.get(t.getDriverQueue().peek()), getPrice()));
-						//System.out.println(t.getDriverQueue().peek());
 					}
 				}
 

@@ -1,4 +1,4 @@
-package petrol_station;
+package aston.group18.vehicle;
 
 /**
  * Driver abstract class is not really necessary at the moment
@@ -7,14 +7,12 @@ package petrol_station;
  * @version 1.0, 03/09/17
  * **/
 
-public abstract class Driver {
+public class Driver {
 	
 	protected boolean isHappy;
 	
-	public Driver(){ //dddd
+	public Driver(){ 
 		
 	}
-	
-	public abstract boolean getMood();
 
 }

@@ -1,4 +1,4 @@
-package petrol_station;
+package aston.group18.vehicle;
 
 /**
  * Vehicle is an abstract class which have several concrete classes.

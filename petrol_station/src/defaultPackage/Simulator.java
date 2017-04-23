@@ -1,9 +1,16 @@
-package petrol_station;
+package defaultPackage;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import aston.group18.shop.Shop;
+import aston.group18.station.Station;
+import aston.group18.vehicle.FamilySedan;
+import aston.group18.vehicle.Motorbike;
+import aston.group18.vehicle.SmallCar;
+import aston.group18.vehicle.Truck;
 
 public class Simulator {
 
@@ -19,7 +26,6 @@ public class Simulator {
 
 	private double[][] array;
 	private List<Double> values;
-	private List<Double> information;
 	private int[][] pumpsAndTills = { { 1, 1 }, { 1, 2 }, { 1, 4 }, { 2, 1 }, { 2, 2 }, { 2, 4 }, { 4, 1 }, { 4, 2 },
 			{ 4, 4 } };
 	double[] earnedMoneyPerCombination = new double[pumpsAndTills.length];
@@ -35,7 +41,6 @@ public class Simulator {
 	public Simulator() {
 
 		values = new ArrayList<>();
-		information = new ArrayList<>();
 		rnd = new SecureRandom();
 	}
 
@@ -133,7 +138,6 @@ public class Simulator {
 			sb.append("Finance:");
 			sb.append("\nEarned money ").append(Functions.round(String.valueOf(sh.getEarnedmoney())));
 			sb.append("\nlost money: ").append(Functions.round(String.valueOf(sta.getLostmoney()))).append("\n");
-			System.out.println("kk" + values.size());
 			System.out.println(sb.toString());
 
 			if (simulationCount == array.length - 1) {

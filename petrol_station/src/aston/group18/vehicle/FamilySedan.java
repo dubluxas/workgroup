@@ -1,48 +1,50 @@
-package petrol_station;
+package aston.group18.vehicle;
 
-/** 
+import defaultPackage.Functions;
+
+/**
+ * Familysedan  is concrete class.
  * @author Justas Petrusonis
  * @author Jasmin Sabaka
- * @version V1.00, 03/10/17
- */
+ * @version 1.0
+ * */
 
-
-public class Truck extends Vehicle {
-	
-	
+public class FamilySedan extends Vehicle {
+		
 	private Driver driver;
-	
+		
 	/**
-	 * This constructs a Truck with a random tank size and a specified unit size.
-	 * It also constructs a driver for this Truck. 
+	 * This constructs a FamilySedan with a random tank size and specific unit size.
+	 * It also constructs a driver.
 	 */
 
-	public Truck() {
+	public FamilySedan() {
 
-		UNITSIZE = 2;
-		tanksize = Functions.getRandom(30,40);
+		UNITSIZE = 1.5;
+		tanksize = Functions.getRandom(12,18);
 		fuelInTank = Functions.getRandom(1,tanksize);
-		driver = new TruckDriver();
+		driver = new Driver();
+		
 	}
-	
+
 	/**
-	 * This constructs a Truck with a random tank size and a specified unit size.
-	 * It also constructs a driver for this Truck. 
+	 * This constructs a FamilySedan with a random tank size and specific unit size.
+	 * It also constructs a driver.
 	 * @param min The minimum size for the tank.
 	 * @param max The maximum size for the tank.
 	 */
+	
+	public FamilySedan(int min, int max) {
 
-	public Truck(int min, int max) {
-		
-		tanksize = Functions.getRandom(min,max);
-		fuelInTank = Functions.getRandom(1,tanksize);
-		driver = new TruckDriver();
-
+		UNITSIZE = 1.5;
+		tanksize = Functions.getRandom(12,18);
+	    fuelInTank = Functions.getRandom(1,tanksize);
+	    driver = new Driver();
 	}
 
 	/**
 	 * Get the tank size.
-	 * @return The tank size for this Truck.
+	 * @return The tank size for this FamilySedan.
 	 */
 
 	public int getTankSize() {
@@ -50,17 +52,17 @@ public class Truck extends Vehicle {
 	}
 
 	/**
-	 * Get the size the Truck occupies in the queue.
-	 * @return Truck size in the queue.
+	 * Get the size the FamilySedan occupies in the queue.
+	 * @return FamilySedan size in the queue.
 	 */
-
+	
 	public double getSizeInQueue() {
 		return UNITSIZE;
 	}
 
 	/**
 	 * Get the current amount of fuel in the tank.
-	 * @return The current amount of fuel in tank of this Truck.
+	 * @return The current fuel for the tank of this FamilySedan.
 	 */
 	
 	public int getFuelInTank() {
@@ -70,7 +72,6 @@ public class Truck extends Vehicle {
 	/**
 	 * fills tank one gallon per tick.
 	 */
-	
 	
 	public void fillfuel(){
 		fuelInTank++;
@@ -84,7 +85,7 @@ public class Truck extends Vehicle {
 	public Driver getDriver(){
 		return driver;
 	}
-
+	
 	/**
 	 * Returns true if fuelInTank is equal to TANKSIZE.
 	 * 
@@ -98,4 +99,6 @@ public class Truck extends Vehicle {
 		return false;
 	}
 
+
+	
 }
