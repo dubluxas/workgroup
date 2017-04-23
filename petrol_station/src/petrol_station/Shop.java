@@ -210,9 +210,15 @@ public class Shop {
 	}
 
 	public double getEarnedmoney() {
-
+		
 		double sum = getBills().values().stream().mapToDouble(Double::doubleValue).sum();
-		return sum;
+		
+		if (sum > 0){
+			return sum;
+		}
+		
+		return 0;
+		
 	}
 
 	public void clear() {
