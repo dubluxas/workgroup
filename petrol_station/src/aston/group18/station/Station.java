@@ -101,6 +101,7 @@ public class Station {
 		// return old list of drivers.
 		// used program visualVM to check memory usage.
 		// program run time was reduced from 16s to 6s
+		
 		newVehicle = true;
 
 		int index = 0;

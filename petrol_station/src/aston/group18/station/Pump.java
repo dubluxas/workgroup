@@ -25,7 +25,7 @@ import aston.group18.vehicle.Vehicle;
 public class Pump {
 
 	private int gallons = 0;
-	private HashMap<Driver, Integer> driverInfo = null;
+	private HashMap<Driver, Integer> driverInfo;
 	private List<Vehicle> lostVehicles;
 	/**
 	 * A {@link #queue} is Collection type {@link Queue} that holds
@@ -98,7 +98,7 @@ public class Pump {
 
 		double size = 0;
 		size = queue.size();
-		
+
 		return size;
 	}
 
@@ -144,8 +144,7 @@ public class Pump {
 		return false;
 
 	}
-	
-	
+
 	/**
 	 * <h3>topUpTank method</h3> Boolean method that tops up the tank and stops
 	 * when the tank is full. Also, pump sends information about the driver and
@@ -164,17 +163,16 @@ public class Pump {
 			gallons++;
 			return true;
 
-		}
-		if (!this.getDriverInfo().containsKey(vehicle.getDriver())) {
+		} else if (!this.getDriverInfo().containsKey(vehicle.getDriver())) {
 			if (vehicle.getFuelInTank() == vehicle.getTankSize()) {
-				addDriverInfo(vehicle.getDriver(), gallons);
+				addDriverInfo(vehicle.getDriver(), Integer.valueOf(gallons));
 				gallons = 0;
 			}
 		}
 		return false;
 	}
-	
-	public List<Vehicle> getLostVehicles(){
+
+	public List<Vehicle> getLostVehicles() {
 		return lostVehicles;
 	}
 
