@@ -159,7 +159,7 @@ public class Station {
 		return pumps;
 	}
 
-	public void removeVehicles(Map<Driver, Integer> driverInfo) {
+	private void removeVehicles(Map<Driver, Integer> driverInfo) {
 
 		if (!driverInfo.isEmpty()) {
 

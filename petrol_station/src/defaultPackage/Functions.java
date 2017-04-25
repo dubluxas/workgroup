@@ -1,7 +1,7 @@
 package defaultPackage;
 
 /**
- * This class holds a static methods
+ * This class holds a static methods that is not related with other classes, but supports them if needed.
  * @author Justas Petrusonis
  */
 
@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.SecureRandom;
 import java.text.DecimalFormat;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.Stream;
 
@@ -91,6 +92,12 @@ public final class Functions {
 			
 		return a;
 		
+	}
+	
+	public static void clearArray(double[] arr) {
+
+		Arrays.fill(arr, 0);
+
 	}
 
 }
