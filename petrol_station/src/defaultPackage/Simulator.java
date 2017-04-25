@@ -1,9 +1,19 @@
+/**
+ * 
+ * @author Justas Petrusonis
+ */
+
 package defaultPackage;
 
+import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import aston.group18.shop.Shop;
 import aston.group18.station.Station;
@@ -34,8 +44,13 @@ public class Simulator {
 	private double[][] ttttt = new double[pumpsAndTills.length][5];
 
 	public static void main(String[] args) {
+
+		System.out.println("Waiting for results.");
+		System.out.println("Aprox time 7s.");
+
 		Simulator s = new Simulator();
 		s.simulate(numOfsteps);
+
 	}
 
 	public Simulator() {
@@ -45,12 +60,10 @@ public class Simulator {
 
 	/**
 	 * Simulate method is responsible to maintain all loops in simulation
-	 * starting from outer:
-	 * 1. For loop: How many times simulation is going to
-	 * run.
-	 * 2. While loop: pushes all combination from array.
-	 * 3. For loop: how many steps simulation is going to run.
-	 * Also, it executes various method on specific time. 
+	 * starting from outer: 1. For loop: How many times simulation is going to
+	 * run. 2. While loop: pushes all combination from array. 3. For loop: how
+	 * many steps simulation is going to run. Also, it executes various method
+	 * on specific time.
 	 * 
 	 * @param num
 	 *            ticks/steps that program must run per per one simulation.
@@ -67,9 +80,10 @@ public class Simulator {
 				}
 				for (step = 0; step < num; step++) {
 					simulateoneStep(array);
+
 					if (step == (numOfsteps - 1)) {
 						getStatistics(values, pumpsAndTills, station, shop);
-						printAllSimulations(station, shop);
+						// printAllSimulations(station, shop);
 						clear();
 					}
 
@@ -81,6 +95,8 @@ public class Simulator {
 			simulationCount = 0;
 			executionCount++;
 		}
+		
+		System.out.print("\033[H\033[2J");
 
 		printStatistics();
 
@@ -127,33 +143,39 @@ public class Simulator {
 					station.getLeastOccupied().addtoQueue(new Truck());
 				}
 			}
-			
+
 			station.topUp();
 			shop.addCustomer(station);
 			shop.pay(station.getDrivers(), station.getPumps(), step, 20);
+
 		}
 	}
 
-	private void printAllSimulations(Station sta, Shop sh) {
-
-		StringBuilder sb = new StringBuilder();
-		sb.append("\nSimulator Counter: ").append((simulationCount + 1)).append("\n");
-		sb.append("Pumps: ").append((int) values.get(0).doubleValue()).append(" Tills: ")
-				.append((int) values.get(1).doubleValue());
-		sb.append("\np cof: ").append(values.get(2)).append(" q cof: ").append(values.get(3));
-		sb.append("\n\n");
-		sb.append("Lost Vehicles:\n");
-		sb.append("MotoBike: ").append(sta.getLostVehiclesCount()[0]).append("\n");
-		sb.append("Small Car: ").append(sta.getLostVehiclesCount()[1]).append("\n");
-		sb.append("Family Sedan: ").append(sta.getLostVehiclesCount()[2]).append("\n");
-		sb.append("Truck: ").append(sta.getLostVehiclesCount()[3]).append("\n");
-		sb.append("Finance:");
-		sb.append("\nEarned money ").append(sh.getEarnedmoney());
-		sb.append("\nlost money: ").append(sta.getLostmoney()).append("\n");
-		System.out.println(sb.toString());
-
-	}
-
+	/*
+	 * private void printAllSimulations(Station sta, Shop sh) {
+	 * 
+	 * StringBuilder sb = new StringBuilder();
+	 * sb.append("\nSimulator Counter: ").append((simulationCount +
+	 * 1)).append("\n"); sb.append("Pumps: ").append(values.get(0).intValue()).
+	 * append(" Tills: ") .append((int) values.get(1).doubleValue());
+	 * sb.append("\np cof: ").append(values.get(2)).append(" q cof: ").
+	 * append(values.get(3)); sb.append("\n\n"); sb.append("Lost Vehicles:\n");
+	 * sb.append("MotoBike: ").append(sta.getLostVehiclesCount()[0]).append(
+	 * "\n");
+	 * sb.append("Small Car: ").append(sta.getLostVehiclesCount()[1]).append
+	 * ("\n");
+	 * sb.append("Family Sedan: ").append(sta.getLostVehiclesCount()[2]).
+	 * append("\n");
+	 * sb.append("Truck: ").append(sta.getLostVehiclesCount()[3]).append( "\n");
+	 * sb.append("Finance:");
+	 * sb.append("\nEarned money ").append(sh.getEarnedmoney());
+	 * sb.append("\nlost money: ").append(sta.getLostmoney()).append("\n");
+	 * //sb.append(sta.getLostVehiclesCount().getClass().getSimpleName());
+	 * System.out.println(sb.toString());
+	 * 
+	 * 
+	 * }
+	 */
 	private void printStatistics() {
 
 		Object columns[] = { "Pump/Till", "Earned money", "Lost money", "Net Gain" };
@@ -183,57 +205,63 @@ public class Simulator {
 		double earnedPerRun;
 		double lostPerRun;
 
-		if (step == (numOfsteps - 1)) {
-			for (int x = 0; x < combinations.length; x++) {
-				for (int y = 0; y < combinations[0].length; y += 2) {
-					if (togetfrom.get(0).intValue() == combinations[x][y + 0]
-							&& togetfrom.get(1).intValue() == combinations[x][y + 1]) {
-						earnedPerRun = sh.getEarnedmoney();
-						lostPerRun = sta.getLostmoney();
-						if (ttttt[index][4] < (earnedPerRun - lostPerRun)) {
-							double[] data = { combinations[x][y], combinations[x][y + 1],
-									togetfrom.get(2).doubleValue(), togetfrom.get(3).doubleValue(),
-									(earnedPerRun - lostPerRun) };
-							for (int i = 0; i < ttttt[0].length; i++) {
-								ttttt[index][i] = data[i];
-							}
+		// if (step == (numOfsteps - 1)) {
+		for (int x = 0; x < combinations.length; x++) {
+			for (int y = 0; y < combinations[0].length; y += 2) {
+				if (togetfrom.get(0).intValue() == combinations[x][y + 0]
+						&& togetfrom.get(1).intValue() == combinations[x][y + 1]) {
+					earnedPerRun = sh.getEarnedmoney();
+					lostPerRun = sta.getLostmoney();
+					if (ttttt[index][4] < (earnedPerRun - lostPerRun)) {
+						double[] data = { combinations[x][y], combinations[x][y + 1], togetfrom.get(2).doubleValue(),
+								togetfrom.get(3).doubleValue(), (earnedPerRun - lostPerRun) };
+						for (int i = 0; i < ttttt[0].length; i++) {
+							ttttt[index][i] = data[i];
 						}
-						earnedMoneyPerCombination[index] += earnedPerRun;
-						lostMoneyPerCombination[index] += lostPerRun;
-						sameintructionCounter++;
 					}
+					earnedMoneyPerCombination[index] += earnedPerRun;
+					lostMoneyPerCombination[index] += lostPerRun;
+					sameintructionCounter++;
 				}
-				index++;
 			}
-			index = 0;
+			index++;
 		}
+		index = 0;
+		// }
 	}
 
 	private void getTotalStatistics() {
-		// if ((simulationCount == (array.length - 1))) {
-		for (int i = 0; i < earnedMoneyPerCombination.length; i++) {
-			earnedMoneyPerCombination[i] = earnedMoneyPerCombination[i] / 25;
-			lostMoneyPerCombination[i] = lostMoneyPerCombination[i] / 25;
-		}
+
+		getAVG(earnedMoneyPerCombination, lostMoneyPerCombination, earnedMoneyPerCombination.length, 25);
+
 		for (int i = 0; i < TotalearnedMoney.length; i++) {
 			TotalearnedMoney[i] += earnedMoneyPerCombination[i];
 			TotallostMoney[i] += lostMoneyPerCombination[i];
 		}
+
 		Functions.clearArray(earnedMoneyPerCombination);
 		Functions.clearArray(lostMoneyPerCombination);
+
 		if (executionCount == 10) {
-			for (int i = 0; i < earnedMoneyPerCombination.length; i++) {
-				TotalearnedMoney[i] = TotalearnedMoney[i] / 10;
-				TotallostMoney[i] = TotallostMoney[i] / 10;
-			}
+			getAVG(TotalearnedMoney, TotallostMoney, TotalearnedMoney.length, 10);
 		}
 	}
 
 	private void clear() {
+
 		values.clear();
 		shop = null;
 		station = null;
 		counter = 0;
+	}
+
+	private void getAVG(double[] first, double[] second, int size, int divby) {
+
+		for (int i = 0; i < size; i++) {
+			first[i] = first[i] / divby;
+			second[i] = second[i] / divby;
+		}
+
 	}
 
 	private void saveValues(List<Double> arr, double value) {
