@@ -34,26 +34,26 @@ public class Simulator {
 	private double[][] ttttt = new double[pumpsAndTills.length][5];
 
 	public static void main(String[] args) {
-
 		Simulator s = new Simulator();
 		s.simulate(numOfsteps);
-
 	}
 
 	public Simulator() {
-
 		values = new ArrayList<>();
 		rnd = new SecureRandom();
 	}
 
 	/**
 	 * Simulate method is responsible to maintain all loops in simulation
-	 * starting from outer: 1. For loop: How many times simulation is going to
-	 * run. 2. While loop: pushes all combination from array. 3. For loop: how
-	 * many steps simulation is going to run.
+	 * starting from outer:
+	 * 1. For loop: How many times simulation is going to
+	 * run.
+	 * 2. While loop: pushes all combination from array.
+	 * 3. For loop: how many steps simulation is going to run.
+	 * Also, it executes various method on specific time. 
 	 * 
 	 * @param num
-	 *            ticks/steps
+	 *            ticks/steps that program must run per per one simulation.
 	 */
 	private void simulate(int num) {
 
