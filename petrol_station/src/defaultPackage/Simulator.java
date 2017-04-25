@@ -5,15 +5,10 @@
 
 package defaultPackage;
 
-import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import aston.group18.shop.Shop;
 import aston.group18.station.Station;
@@ -95,8 +90,7 @@ public class Simulator {
 			simulationCount = 0;
 			executionCount++;
 		}
-		
-		
+
 		printStatistics();
 
 		long end = System.currentTimeMillis();
