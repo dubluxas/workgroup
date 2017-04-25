@@ -96,8 +96,7 @@ public class Simulator {
 			executionCount++;
 		}
 		
-		System.out.print("\033[H\033[2J");
-
+		
 		printStatistics();
 
 		long end = System.currentTimeMillis();
