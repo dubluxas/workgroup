@@ -2,7 +2,6 @@
  * 
  * @author Justas Petrusonis
  */
-
 package defaultPackage;
 
 import java.security.SecureRandom;
@@ -23,20 +22,18 @@ public class Simulator {
 	private Shop shop;
 	private Random rnd;
 	private static int step;
-	protected static int numOfsteps = 1440;
-	private int counter;
+	private static int numOfsteps = 1440;
 	private int simulationCount = 0;
 	private int executionCount = 1;
-	private int sameintructionCounter = 0;
-	private double[][] array;
+	private double[][] combinations;
 	private List<Double> values;
-	private int[][] pumpsAndTills = { { 1, 1 }, { 1, 2 }, { 1, 4 }, { 2, 1 }, { 2, 2 }, { 2, 4 }, { 4, 1 }, { 4, 2 },
-			{ 4, 4 } };
-	private double[] earnedMoneyPerCombination = new double[pumpsAndTills.length];
-	private double[] lostMoneyPerCombination = new double[pumpsAndTills.length];
-	private double[] TotalearnedMoney = new double[pumpsAndTills.length];
-	private double[] TotallostMoney = new double[pumpsAndTills.length];
-	private double[][] ttttt = new double[pumpsAndTills.length][5];
+	private final int[][] pumpsAndTills = { { 1, 1 }, { 1, 2 }, { 1, 4 }, { 2, 1 }, { 2, 2 }, { 2, 4 }, { 4, 1 },
+			{ 4, 2 }, { 4, 4 } };
+	private double[] earnedMoneyPerCombination;
+	private double[] lostMoneyPerCombination;
+	private double[] TotalearnedMoney;
+	private double[] TotallostMoney;
+	private double[][] bestCombinations;
 
 	public static void main(String[] args) {
 
@@ -51,6 +48,12 @@ public class Simulator {
 	public Simulator() {
 		values = new ArrayList<>();
 		rnd = new SecureRandom();
+		earnedMoneyPerCombination = new double[pumpsAndTills.length];
+		lostMoneyPerCombination = new double[pumpsAndTills.length];
+		TotalearnedMoney = new double[pumpsAndTills.length];
+		TotallostMoney = new double[pumpsAndTills.length];
+		bestCombinations = new double[pumpsAndTills.length][5];
+
 	}
 
 	/**
@@ -66,19 +69,18 @@ public class Simulator {
 	private void simulate(int num) {
 
 		long start = System.currentTimeMillis();
-		array = Functions.loadsettings(Functions.readSettings("text.txt", 5));
+		combinations = Functions.loadsettings(Functions.readSettings("text.txt", 5));
 
 		for (int y = 0; y < 10; y++) {
-			while (simulationCount < array.length) {
-				if (step == num - 1 && simulationCount < array.length) {
+			while (simulationCount < combinations.length) {
+				if (step == num - 1 && simulationCount < combinations.length) {
 					step = 0;
 				}
 				for (step = 0; step < num; step++) {
-					simulateoneStep(array);
+					simulateoneStep(combinations);
 
 					if (step == (numOfsteps - 1)) {
 						getStatistics(values, pumpsAndTills, station, shop);
-						// printAllSimulations(station, shop);
 						clear();
 					}
 
@@ -140,35 +142,10 @@ public class Simulator {
 			station.topUp();
 			shop.addCustomer(station);
 			shop.pay(station.getDrivers(), station.getPumps(), step, 20);
-
+			
 		}
 	}
 
-	/*
-	 * private void printAllSimulations(Station sta, Shop sh) {
-	 * 
-	 * StringBuilder sb = new StringBuilder();
-	 * sb.append("\nSimulator Counter: ").append((simulationCount +
-	 * 1)).append("\n"); sb.append("Pumps: ").append(values.get(0).intValue()).
-	 * append(" Tills: ") .append((int) values.get(1).doubleValue());
-	 * sb.append("\np cof: ").append(values.get(2)).append(" q cof: ").
-	 * append(values.get(3)); sb.append("\n\n"); sb.append("Lost Vehicles:\n");
-	 * sb.append("MotoBike: ").append(sta.getLostVehiclesCount()[0]).append(
-	 * "\n");
-	 * sb.append("Small Car: ").append(sta.getLostVehiclesCount()[1]).append
-	 * ("\n");
-	 * sb.append("Family Sedan: ").append(sta.getLostVehiclesCount()[2]).
-	 * append("\n");
-	 * sb.append("Truck: ").append(sta.getLostVehiclesCount()[3]).append( "\n");
-	 * sb.append("Finance:");
-	 * sb.append("\nEarned money ").append(sh.getEarnedmoney());
-	 * sb.append("\nlost money: ").append(sta.getLostmoney()).append("\n");
-	 * //sb.append(sta.getLostVehiclesCount().getClass().getSimpleName());
-	 * System.out.println(sb.toString());
-	 * 
-	 * 
-	 * }
-	 */
 	private void printStatistics() {
 
 		Object columns[] = { "Pump/Till", "Earned money", "Lost money", "Net Gain" };
@@ -183,9 +160,10 @@ public class Simulator {
 
 		Object columns1[] = { "Pump/Till", "p", "q", "net Gain" };
 		printColumns(columns1);
-		for (int y = 0; y < ttttt.length; y++) {
-			Object[] data = { Double.valueOf(ttttt[y][0]), Double.valueOf(ttttt[y][1]), Double.valueOf(ttttt[y][2]),
-					Double.valueOf(ttttt[y][3]), Double.valueOf(ttttt[y][4]) };
+		for (int y = 0; y < bestCombinations.length; y++) {
+			Object[] data = { Double.valueOf(bestCombinations[y][0]), Double.valueOf(bestCombinations[y][1]),
+					Double.valueOf(bestCombinations[y][2]), Double.valueOf(bestCombinations[y][3]),
+					Double.valueOf(bestCombinations[y][4]) };
 			System.out.format("|%-8.0f %.0f|%,-12.2f|%,-12.2f|%,-12.2f|%n", data);
 		}
 		printSeparator();
@@ -205,22 +183,22 @@ public class Simulator {
 						&& togetfrom.get(1).intValue() == combinations[x][y + 1]) {
 					earnedPerRun = sh.getEarnedmoney();
 					lostPerRun = sta.getLostmoney();
-					if (ttttt[index][4] < (earnedPerRun - lostPerRun)) {
+					if (bestCombinations[index][4] < (earnedPerRun - lostPerRun)) {
 						double[] data = { combinations[x][y], combinations[x][y + 1], togetfrom.get(2).doubleValue(),
 								togetfrom.get(3).doubleValue(), (earnedPerRun - lostPerRun) };
-						for (int i = 0; i < ttttt[0].length; i++) {
-							ttttt[index][i] = data[i];
+						for (int i = 0; i < bestCombinations[0].length; i++) {
+							bestCombinations[index][i] = data[i];
 						}
 					}
 					earnedMoneyPerCombination[index] += earnedPerRun;
 					lostMoneyPerCombination[index] += lostPerRun;
-					sameintructionCounter++;
+					// sameintructionCounter++;
 				}
 			}
 			index++;
 		}
 		index = 0;
-		// }
+
 	}
 
 	private void getTotalStatistics() {
@@ -245,7 +223,7 @@ public class Simulator {
 		values.clear();
 		shop = null;
 		station = null;
-		counter = 0;
+
 	}
 
 	private void getAVG(double[] first, double[] second, int size, int divby) {
@@ -258,7 +236,8 @@ public class Simulator {
 	}
 
 	private void saveValues(List<Double> arr, double value) {
-		if (counter < array[0].length) {
+		int counter = 0;
+		if (counter < combinations[0].length) {
 			arr.add(Double.valueOf(value));
 			counter++;
 		}

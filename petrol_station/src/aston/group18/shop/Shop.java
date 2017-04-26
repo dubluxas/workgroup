@@ -23,10 +23,9 @@ public class Shop {
 	private Till till;
 	private final static double pricePerGallon = 1.20;
 	private List<Till> tills;
-	private Map<Driver, Integer> ShopingArea;
-	private Map<Driver, Double> bill;
+	private Map<Driver, Double> bills;
 	private List<Driver> customers = new ArrayList<>();
-	private int stepp = 0;
+	private int stepsToSkipp = 0;
 
 	/**
 	 * This method creates a specified number of tills.
@@ -38,7 +37,7 @@ public class Shop {
 	public Shop(int tillSize) {
 
 		tills = new ArrayList<>();
-		bill = new HashMap<>();
+		bills = new HashMap<>();
 
 		for (int i = 1; i <= tillSize; i++) {
 			till = new Till();
@@ -50,37 +49,9 @@ public class Shop {
 	public Shop() {
 
 		tills = new ArrayList<>();
-		bill = new HashMap<>();
+		bills = new HashMap<>();
 		till = new Till();
 		tills.add(till);
-
-	}
-
-	// Method is not used.
-	public void addcustomers(HashMap<Driver, Integer> cust) {
-		ShopingArea = new HashMap<>();
-
-		Set<Map.Entry<Driver, Integer>> entrySet = cust.entrySet();
-		Iterator<Entry<Driver, Integer>> entrySetIterator = entrySet.iterator();
-
-		while (entrySetIterator.hasNext()) {
-
-			Entry<Driver, Integer> entry = entrySetIterator.next();
-			ShopingArea.put(entry.getKey(), entry.getValue());
-
-		}
-
-	}
-
-	/**
-	 * Get the customers' information.
-	 * This method currently is not in used.
-	 * @return the customers in the shop, but not in queue.
-	 */
-	// Method is not used.
-	public Map<Driver, Integer> getCustomerInfo() {
-
-		return ShopingArea;
 
 	}
 
@@ -90,7 +61,7 @@ public class Shop {
 	 * @return the price.
 	 */
 
-	public static double getPrice() {
+	public static double pricePerGallon() {
 		return pricePerGallon;
 	}
 
@@ -152,11 +123,11 @@ public class Shop {
 	@SuppressWarnings("boxing")
 	public void pay(Map<Driver, Integer> driverInfo, List<Pump> pumps, int step, int stepstoSkip) {
 
-		if (stepp == 0) {
-			stepp = step;
+		if (stepsToSkipp == 0) {
+			stepsToSkipp = step;
 		}
 
-		if (((stepp + stepstoSkip) - 1) == step) {
+		if (((stepsToSkipp + stepstoSkip) - 1) == step) {
 
 			for (Iterator<Till> itr = tills.iterator(); itr.hasNext();) {
 
@@ -164,24 +135,24 @@ public class Shop {
 
 				if (driverInfo.containsKey(t.getDriverQueue().peek())) {
 
-					if (!bill.containsKey(t.getDriverQueue().peek())) {
+					if (!bills.containsKey(t.getDriverQueue().peek())) {
 
-						bill.put(t.getDriverQueue().peek(),
-								getPricePerDriver(driverInfo.get(t.getDriverQueue().peek()), getPrice()));
+						bills.put(t.getDriverQueue().peek(),
+								getPricePerDriver(driverInfo.get(t.getDriverQueue().peek()), pricePerGallon()));
 					}
 				}
 
-				delVehicle(pumps, driverInfo, t);
+				removeCustomerInfo(pumps, driverInfo, t);
 
 			}
 
-			stepp = 0;
+			stepsToSkipp = 0;
 
 		}
 
 	}
 
-	private void delVehicle(List<Pump> pumps, Map<Driver, Integer> driverInfo, Till t) {
+	private void removeCustomerInfo(List<Pump> pumps, Map<Driver, Integer> driverInfo, Till t) {
 
 		for (Iterator<Pump> itr2 = pumps.iterator(); itr2.hasNext();) {
 
@@ -202,12 +173,11 @@ public class Shop {
 	}
 
 	public static double getPricePerDriver(int gallons, double price) {
-		double result = gallons * price;
-		return result;
+		return gallons * price;
 	}
 
 	public Map<Driver, Double> getBills() {
-		return bill;
+		return bills;
 	}
 
 	public double getEarnedmoney() {
@@ -221,13 +191,5 @@ public class Shop {
 		return 0;
 		
 	}
-
-	public void clear() {
-
-		tills = null;
-		ShopingArea = null;
-		bill = null;
-
-	}
-
+	
 }

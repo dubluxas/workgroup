@@ -1,0 +1,25 @@
+/*
+	 * private void printAllSimulations(Station sta, Shop sh) {
+	 * 
+	 * StringBuilder sb = new StringBuilder();
+	 * sb.append("\nSimulator Counter: ").append((simulationCount +
+	 * 1)).append("\n"); sb.append("Pumps: ").append(values.get(0).intValue()).
+	 * append(" Tills: ") .append((int) values.get(1).doubleValue());
+	 * sb.append("\np cof: ").append(values.get(2)).append(" q cof: ").
+	 * append(values.get(3)); sb.append("\n\n"); sb.append("Lost Vehicles:\n");
+	 * sb.append("MotoBike: ").append(sta.getLostVehiclesCount()[0]).append(
+	 * "\n");
+	 * sb.append("Small Car: ").append(sta.getLostVehiclesCount()[1]).append
+	 * ("\n");
+	 * sb.append("Family Sedan: ").append(sta.getLostVehiclesCount()[2]).
+	 * append("\n");
+	 * sb.append("Truck: ").append(sta.getLostVehiclesCount()[3]).append( "\n");
+	 * sb.append("Finance:");
+	 * sb.append("\nEarned money ").append(sh.getEarnedmoney());
+	 * sb.append("\nlost money: ").append(sta.getLostmoney()).append("\n");
+	 * //sb.append(sta.getLostVehiclesCount().getClass().getSimpleName());
+	 * System.out.println(sb.toString());
+	 * 
+	 * 
+	 * }
+	 */

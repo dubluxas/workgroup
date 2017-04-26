@@ -2,11 +2,13 @@ package aston.group18.station;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import aston.group18.shop.Shop;
+import aston.group18.shop.Till;
 import aston.group18.vehicle.Driver;
 import aston.group18.vehicle.FamilySedan;
 import aston.group18.vehicle.Motorbike;
@@ -159,35 +161,13 @@ public class Station {
 		return pumps;
 	}
 
-	private void removeVehicles(Map<Driver, Integer> driverInfo) {
-
-		if (!driverInfo.isEmpty()) {
-
-			for (Pump p : pumps) {
-
-				if (p.getVehicleQueue().peek() != null) {
-
-					if (driverInfo.containsKey(p.getVehicleQueue().peek().getDriver())) {
-
-						p.getVehicleQueue().poll();
-
-					}
-
-				}
-
-			}
-
-		}
-
-	}
-
 	@SuppressWarnings("boxing")
 	public Map<Vehicle, Double> getLostVehicles() {
 
 		for (Pump p : pumps) {
 
 			for (Vehicle v : p.getLostVehicles()) {
-				lostVehicles.put(v, Shop.getPricePerDriver((v.getTankSize() - v.getFuelInTank()), Shop.getPrice()));
+				lostVehicles.put(v, Shop.getPricePerDriver((v.getTankSize() - v.getFuelInTank()), Shop.pricePerGallon()));
 			}
 
 		}
@@ -195,7 +175,10 @@ public class Station {
 		return lostVehicles;
 
 	}
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public int[] getLostVehiclesCount() {
 
 		int w, x, y, z;
@@ -247,11 +230,6 @@ public class Station {
 		return trucks;
 	}
 
-	public void clear() {
-		pump = null;
-		pumps = null;
-
-	}
 	
 	public double getLostmoney() {
 
