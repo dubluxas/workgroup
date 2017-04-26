@@ -170,21 +170,20 @@ public class Simulator {
 
 	}
 
-	private void getStatistics(List<Double> togetfrom, int[][] combinations, Station sta, Shop sh) {
+	private void getStatistics(List<Double> togetfrom, int[][] combination, Station sta, Shop sh) {
 
 		int index = 0;
 		double earnedPerRun;
 		double lostPerRun;
-
-		// if (step == (numOfsteps - 1)) {
-		for (int x = 0; x < combinations.length; x++) {
-			for (int y = 0; y < combinations[0].length; y += 2) {
-				if (togetfrom.get(0).intValue() == combinations[x][y + 0]
-						&& togetfrom.get(1).intValue() == combinations[x][y + 1]) {
+		
+		for (int x = 0; x < combination.length; x++) {
+			for (int y = 0; y < combination[0].length; y += 2) {
+				if (togetfrom.get(0).intValue() == combination[x][y + 0]
+						&& togetfrom.get(1).intValue() == combination[x][y + 1]) {
 					earnedPerRun = sh.getEarnedmoney();
 					lostPerRun = sta.getLostmoney();
 					if (bestCombinations[index][4] < (earnedPerRun - lostPerRun)) {
-						double[] data = { combinations[x][y], combinations[x][y + 1], togetfrom.get(2).doubleValue(),
+						double[] data = { combination[x][y], combination[x][y + 1], togetfrom.get(2).doubleValue(),
 								togetfrom.get(3).doubleValue(), (earnedPerRun - lostPerRun) };
 						for (int i = 0; i < bestCombinations[0].length; i++) {
 							bestCombinations[index][i] = data[i];
@@ -192,7 +191,6 @@ public class Simulator {
 					}
 					earnedMoneyPerCombination[index] += earnedPerRun;
 					lostMoneyPerCombination[index] += lostPerRun;
-					// sameintructionCounter++;
 				}
 			}
 			index++;
