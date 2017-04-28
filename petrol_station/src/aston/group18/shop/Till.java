@@ -17,9 +17,7 @@ public class Till {
 	private Queue<Driver> queue;
 
 	public Till() {
-
 		queue = new LinkedList<>();
-
 	}
 
 	public boolean addtoQueue(Driver o) {
@@ -31,7 +29,6 @@ public class Till {
 		}
 
 		return false;
-
 	}
 
 	public Queue<Driver> getDriverQueue() {

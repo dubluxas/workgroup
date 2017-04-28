@@ -208,16 +208,13 @@ public class Station {
 	public void topUp() {
 
 		for (Pump p : pumps) {
-
 			if (!p.getVehicleQueue().isEmpty()) {
-
 				p.topUpTank(p.getVehicleQueue().peek());
-
 			}
 		}
-
+		
 	}
-
+	
 	public void setAllowtrucks(boolean trucks) {
 		if (trucks != this.trucks) {
 			this.trucks = trucks;
@@ -227,14 +224,11 @@ public class Station {
 	public boolean getAllowTrucks() {
 		return trucks;
 	}
-
 	
 	public double getLostmoney() {
-
 		double sum = 0.00;
 		sum = getLostVehicles().entrySet().stream().map(Map.Entry::getValue).mapToDouble(Double::doubleValue).sum();
 		return sum;
-
 	}
 
 }

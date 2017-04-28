@@ -66,30 +66,30 @@ public class Shop {
 
 	// add driver to to least occupied queue
 	/**
-	 * Method is responsible to add new customers to one of least occupied queues in the shop.
-	 * @param station Takes station as a parameter to get drivers from station.
+	 * Method is responsible to add new customers to one of least occupied
+	 * queues in the shop.
+	 * 
+	 * @param station
+	 *            Takes station as a parameter to get drivers from station.
 	 */
 	public void addCustomer(Station station) {
 
 		if (!station.getDrivers().isEmpty()) {
-
 			for (Entry<Driver, Integer> driver : station.getDrivers().entrySet()) {
 				// d arrayList is used to make sure that the same customer not
 				// going to be added to the queue?!
 				if (!customers.contains(driver.getKey())) {
 					getLeastOccupied().addtoQueue(driver.getKey());
 					customers.add(driver.getKey());
-
 				}
-
 			}
-
 		}
 
 	}
 
 	/**
-	 * The method is responsible to return least occupied shop queue. 
+	 * The method is responsible to return least occupied shop queue.
+	 * 
 	 * @return returns Till that is least occupied.
 	 */
 	public Till getLeastOccupied() {
@@ -110,7 +110,7 @@ public class Shop {
 
 		return tills.get(index);
 	}
-	
+
 	/**
 	 * 
 	 * @param driverInfo
@@ -125,40 +125,27 @@ public class Shop {
 		if (stepsToSkipp == 0) {
 			stepsToSkipp = step;
 		}
-
 		if (((stepsToSkipp + stepstoSkip) - 1) == step) {
 
 			for (Iterator<Till> itr = tills.iterator(); itr.hasNext();) {
-
 				Till t = itr.next();
-
 				if (driverInfo.containsKey(t.getDriverQueue().peek())) {
-
 					if (!bills.containsKey(t.getDriverQueue().peek())) {
-
 						bills.put(t.getDriverQueue().peek(),
 								getPricePerDriver(driverInfo.get(t.getDriverQueue().peek()), pricePerGallon()));
 					}
 				}
-
 				removeCustomerInfo(pumps, driverInfo, t);
-
 			}
-
 			stepsToSkipp = 0;
-
 		}
-
 	}
 
 	private void removeCustomerInfo(List<Pump> pumps, Map<Driver, Integer> driverInfo, Till t) {
 
 		for (Iterator<Pump> itr2 = pumps.iterator(); itr2.hasNext();) {
-
 			Pump pump = itr2.next();
-
 			if (pump.getVehicleQueue().peek() != null) {
-
 				if (pump.getVehicleQueue().peek().getDriver().equals(t.getDriverQueue().peek())) {
 
 					pump.getVehicleQueue().poll();
@@ -166,7 +153,6 @@ public class Shop {
 					driverInfo.remove(t.getDriverQueue().peek());
 
 				}
-
 			}
 		}
 	}
@@ -180,15 +166,12 @@ public class Shop {
 	}
 
 	public double getEarnedmoney() {
-		
+
 		double sum = getBills().values().stream().mapToDouble(Double::doubleValue).sum();
-		
-		if (sum > 0){
+		if (sum > 0) {
 			return sum;
 		}
-		
 		return 0;
-		
 	}
-	
+
 }

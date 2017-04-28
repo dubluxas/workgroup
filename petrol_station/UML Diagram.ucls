@@ -1,52 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.14" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="petrol_station.CarDriver" project="petrol_station" 
-    file="/petrol_station/src/petrol_station/CarDriver.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="340" y="574"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="2" language="java" name="aston.group18.vehicle.Driver" project="petrol_station" 
+  <class id="1" language="java" name="aston.group18.vehicle.Driver" project="petrol_station" 
     file="/petrol_station/src/aston/group18/vehicle/Driver.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="543" y="517"/>    
+    <position height="-1" width="-1" x="1265" y="650"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="defaultPackage.Functions" project="petrol_station" 
+  <class id="2" language="java" name="defaultPackage.Functions" project="petrol_station" 
     file="/petrol_station/src/defaultPackage/Functions.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="488" y="-188"/>    
+    <position height="-1" width="-1" x="1120" y="-281"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="aston.group18.vehicle.FamilySedan" project="petrol_station" 
+  <class id="3" language="java" name="aston.group18.vehicle.FamilySedan" project="petrol_station" 
     file="/petrol_station/src/aston/group18/vehicle/FamilySedan.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="844" y="239"/>    
+    <position height="-1" width="-1" x="873" y="284"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="aston.group18.vehicle.Motorbike" project="petrol_station" 
+  <class id="4" language="java" name="aston.group18.vehicle.Motorbike" project="petrol_station" 
     file="/petrol_station/src/aston/group18/vehicle/Motorbike.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1063" y="255"/>    
+    <position height="-1" width="-1" x="1075" y="289"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="aston.group18.station.Pump" project="petrol_station" 
+  <class id="5" language="java" name="aston.group18.station.Pump" project="petrol_station" 
     file="/petrol_station/src/aston/group18/station/Pump.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1605" y="302"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -55,34 +46,34 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="aston.group18.shop.Shop" project="petrol_station" 
+  <class id="6" language="java" name="aston.group18.shop.Shop" project="petrol_station" 
     file="/petrol_station/src/aston/group18/shop/Shop.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="165" y="311"/>    
+    <position height="-1" width="-1" x="628" y="571"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="defaultPackage.Simulator" project="petrol_station" 
+  <class id="7" language="java" name="defaultPackage.Simulator" project="petrol_station" 
     file="/petrol_station/src/defaultPackage/Simulator.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="187" y="-76"/>    
+    <position height="-1" width="-1" x="868" y="-115"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="aston.group18.vehicle.SmallCar" project="petrol_station" 
+  <class id="8" language="java" name="aston.group18.vehicle.SmallCar" project="petrol_station" 
     file="/petrol_station/src/aston/group18/vehicle/SmallCar.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1298" y="357"/>    
+    <position height="-1" width="-1" x="1263" y="345"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="aston.group18.station.Station" project="petrol_station" 
+  <class id="9" language="java" name="aston.group18.station.Station" project="petrol_station" 
     file="/petrol_station/src/aston/group18/station/Station.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1610" y="-78"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -91,59 +82,61 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="aston.group18.shop.Till" project="petrol_station" 
+  <class id="10" language="java" name="aston.group18.shop.Till" project="petrol_station" 
     file="/petrol_station/src/aston/group18/shop/Till.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="463" y="21"/>    
+    <position height="-1" width="-1" x="965" y="716"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="aston.group18.vehicle.Truck" project="petrol_station" 
+  <class id="11" language="java" name="aston.group18.vehicle.Truck" project="petrol_station" 
     file="/petrol_station/src/aston/group18/vehicle/Truck.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="659" y="239"/>    
+    <position height="-1" width="-1" x="667" y="282"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="petrol_station.TruckDriver" project="petrol_station" 
-    file="/petrol_station/src/petrol_station/TruckDriver.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="792" y="564"/>    
+  <class id="12" language="java" name="aston.group18.vehicle.Vehicle" project="petrol_station" 
+    file="/petrol_station/src/aston/group18/vehicle/Vehicle.java" binary="false" corner="BOTTOM_LEFT">    
+    <position height="-1" width="-1" x="1368" y="-246"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="aston.group18.vehicle.Vehicle" project="petrol_station" 
-    file="/petrol_station/src/aston/group18/vehicle/Vehicle.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="969" y="-138"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <generalization id="15">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="14"/>  
+  <generalization id="13">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="12"/>  
   </generalization>  
-  <generalization id="16">    
-    <bendpoint x="690" y="84"/>    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="14"/>  
-  </generalization>  
-  <association id="17">    
-    <bendpoint x="1395" y="-64"/>    
-    <bendpoint x="1392" y="28"/>    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="18" name="pumps"/>      
-      <multiplicity id="19" minimum="0" maximum="2147483647"/>    
+  <association id="14">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="15" name="customers">        
+        <position height="0" width="0" x="722" y="133"/>      
+      </attribute>      
+      <multiplicity id="16" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="722" y="133"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="17">    
+    <bendpoint x="790" y="411"/>    
+    <bendpoint x="946" y="461"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="18" name="driver">        
+        <position height="0" width="0" x="722" y="133"/>      
+      </attribute>      
+      <multiplicity id="19" minimum="0" maximum="1">        
+        <position height="0" width="0" x="722" y="133"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="20">    
@@ -151,130 +144,181 @@
     <bendpoint x="1785" y="1"/>    
     <bendpoint x="1787" y="91"/>    
     <bendpoint x="1785" y="311"/>    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="21" name="pump"/>      
-      <multiplicity id="22" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="21" name="pump">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="22" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="23">    
+    <bendpoint x="1339" y="531"/>    
+    <bendpoint x="1338" y="577"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="24" name="driver">        
+        <position height="0" width="0" x="722" y="133"/>      
+      </attribute>      
+      <multiplicity id="25" minimum="0" maximum="1">        
+        <position height="0" width="0" x="722" y="133"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="26">    
+    <bendpoint x="796" y="164"/>    
+    <bendpoint x="982" y="157"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <association id="27">    
+    <bendpoint x="1367" y="139"/>    
+    <bendpoint x="1359" y="83"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="28" name="lostVehicles">        
+        <position height="0" width="0" x="399" y="-108"/>      
+      </attribute>      
+      <multiplicity id="29" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="399" y="-108"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="30">    
+    <bendpoint x="765" y="133"/>    
+    <bendpoint x="763" y="375"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="31" name="shop">        
+        <position height="0" width="0" x="463" y="260"/>      
+      </attribute>      
+      <multiplicity id="32" minimum="0" maximum="1">        
+        <position height="0" width="0" x="463" y="260"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="23">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="24" name="driver"/>      
-      <multiplicity id="25" minimum="0" maximum="1"/>    
+  <association id="33">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="34" name="driver">        
+        <position height="0" width="0" x="722" y="133"/>      
+      </attribute>      
+      <multiplicity id="35" minimum="0" maximum="1">        
+        <position height="0" width="0" x="722" y="133"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="26">    
-    <bendpoint x="1253" y="118"/>    
+  <association id="36">    
+    <bendpoint x="1393" y="-36"/>    
+    <bendpoint x="1392" y="28"/>    
+    <bendpoint x="1395" y="123"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="37" name="pumps">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="38" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="39">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="27" name="lostVehicles"/>      
-      <multiplicity id="28" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="29">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="30" name="driver"/>      
-      <multiplicity id="31" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="32">    
-    <bendpoint x="380" y="-268"/>    
-    <bendpoint x="820" y="-269"/>    
-    <bendpoint x="1147" y="-267"/>    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="33" name="station"/>      
-      <multiplicity id="34" minimum="0" maximum="1"/>    
+      <attribute id="40" name="till">        
+        <position height="0" width="0" x="500" y="666"/>      
+      </attribute>      
+      <multiplicity id="41" minimum="0" maximum="1">        
+        <position height="0" width="0" x="500" y="666"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="35">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="36" name="driver"/>      
-      <multiplicity id="37" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="38">    
-    <bendpoint x="1219" y="178"/>    
+  <association id="42">    
+    <bendpoint x="819" y="715"/>    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="39" name="queue"/>      
-      <multiplicity id="40" minimum="0" maximum="2147483647"/>    
+      <attribute id="43" name="tills">        
+        <position height="0" width="0" x="500" y="666"/>      
+      </attribute>      
+      <multiplicity id="44" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="500" y="666"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
+    <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="41">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="42" name="till"/>      
-      <multiplicity id="43" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="44">    
+  <generalization id="45">    
     <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="14"/>  
+    <end type="TARGET" refId="12"/>  
   </generalization>  
-  <association id="45">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="46" name="queue"/>      
-      <multiplicity id="47" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="48">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="49" name="tills"/>      
-      <multiplicity id="50" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="51">    
+  <association id="46">    
+    <bendpoint x="1353" y="151"/>    
+    <bendpoint x="1334" y="-1"/>    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="52" name="driver"/>      
-      <multiplicity id="53" minimum="0" maximum="1"/>    
+      <attribute id="47" name="queue">        
+        <position height="0" width="0" x="399" y="-108"/>      
+      </attribute>      
+      <multiplicity id="48" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="399" y="-108"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="54">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="55" name="shop"/>      
-      <multiplicity id="56" minimum="0" maximum="1"/>    
+  <association id="49">    
+    <bendpoint x="1168" y="474"/>    
+    <bendpoint x="1346" y="473"/>    
+    <bendpoint x="1367" y="566"/>    
+    <bendpoint x="1356" y="605"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="50" name="driver">        
+        <position height="0" width="0" x="722" y="133"/>      
+      </attribute>      
+      <multiplicity id="51" minimum="0" maximum="1">        
+        <position height="0" width="0" x="722" y="133"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="57">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="14"/>  
+  <association id="52">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="53" name="queue">        
+        <position height="0" width="0" x="722" y="133"/>      
+      </attribute>      
+      <multiplicity id="54" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="722" y="133"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="55">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="12"/>  
   </generalization>  
-  <generalization id="58">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <association id="59">    
+  <association id="56">    
+    <bendpoint x="1134" y="-131"/>    
+    <bendpoint x="1402" y="-130"/>    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="60" name="customers"/>      
-      <multiplicity id="61" minimum="0" maximum="2147483647"/>    
+      <attribute id="57" name="station">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="58" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="62">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
