@@ -1,5 +1,7 @@
 package aston.group18.vehicle;
 
+import defaultPackage.Functions;
+
 /**
  * Driver abstract class is not really necessary at the moment
  * but it could be used in future software development.
@@ -9,10 +11,37 @@ package aston.group18.vehicle;
 
 public class Driver {
 	
-	protected boolean isHappy;
+	private boolean isHappy;
+	private double extraMoney;
+	private int time;
 	
-	public Driver(){ 
+	public Driver(int min, int max){ 
+		isHappy=false;
+		time=0;
+		extraMoney=Functions.getRandom(min,max);
+	}
+	
+	public boolean getMood(){
+		return isHappy;
+	}
+	
+	public void makeHappy(){
+		isHappy=true;
+	}
+	
+	public double getExtraMoney(){
+		return extraMoney;
+	}
+	
+	public int getTime(){
+		return time;
+	}
+	
+	public void incrementTime(){
+		time++;
 		
 	}
+	
+	
 
 }
