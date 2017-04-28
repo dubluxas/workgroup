@@ -1,6 +1,6 @@
 package aston.group18.vehicle;
 
-import defaultPackage.Functions;
+
 
 /**
  * Driver abstract class is not really necessary at the moment
@@ -15,10 +15,10 @@ public class Driver {
 	private double extraMoney;
 	private int time;
 	
-	public Driver(int min, int max){ 
+	public Driver(){ 
 		isHappy=false;
 		time=0;
-		extraMoney=Functions.getRandom(min,max);
+		//extraMoney=Functions.getRandom(min,max);
 	}
 	
 	public boolean getMood(){

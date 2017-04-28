@@ -1,6 +1,6 @@
 package aston.group18.vehicle;
+import DefaultPackage.Functions;
 
-import defaultPackage.Functions;
 
 /**
  * @author Justas Petrusonis

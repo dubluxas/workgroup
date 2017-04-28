@@ -1,4 +1,6 @@
 package aston.group18.view;
+import  DefaultPackage.Simulator;
+
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -16,7 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import defaultPackage.Simulator;
+
 
 public class SimulatorGUI extends Simulator {
 
