@@ -11,7 +11,7 @@ import defaultPackage.Functions;
 
 public class FamilySedan extends Vehicle {
 		
-	private Driver driver;
+	private final static double UNITSIZE = 1.5;
 		
 	/**
 	 * This constructs a FamilySedan with a random tank size and specific unit size.
@@ -20,10 +20,10 @@ public class FamilySedan extends Vehicle {
 
 	public FamilySedan() {
 
-		UNITSIZE = 1.5;
+		//UNITSIZE = 1.5;
 		tanksize = Functions.getRandom(12,18);
-		fuelInTank = Functions.getRandom(1,tanksize);
-		driver = new Driver();
+		fuelInTank = Functions.getRandom(1,tanksize/2);
+		driver = new Driver(8,16);
 		
 	}
 
@@ -36,10 +36,10 @@ public class FamilySedan extends Vehicle {
 	
 	public FamilySedan(int min, int max) {
 
-		UNITSIZE = 1.5;
+		//UNITSIZE = 1.5;
 		tanksize = Functions.getRandom(12,18);
-	    fuelInTank = Functions.getRandom(1,tanksize);
-	    driver = new Driver();
+	    fuelInTank = Functions.getRandom(1,tanksize/2);
+	    driver = new Driver(8,16);
 	}
 
 	/**
