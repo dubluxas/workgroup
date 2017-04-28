@@ -1,8 +1,9 @@
+package DefaultPackage;
 /**
  * 
  * @author Justas Petrusonis
  */
-package defaultPackage;
+
 
 import java.security.SecureRandom;
 import java.util.ArrayList;

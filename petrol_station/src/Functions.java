@@ -1,4 +1,4 @@
-package defaultPackage;
+
 
 /**
  * This class holds a static methods that is not related with other classes, but supports them if needed.
